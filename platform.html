@@ -1,282 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Platform - Influencer Marketplace</title>
+    <title>Platform - InfluenceConnect</title>
     <style>
-        /* Reset some default styles */
+        /* Basic Reset and Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Body Styling */
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            background-color: #f8f9fa;
         }
 
-        /* Navigation Bar */
+        /* Header/Navbar */
+        header {
+            background-color: #4a6bff;
+            color: white;
+            padding: 1rem 5%;
+        }
+
         nav {
-            background-color: #333;
-            padding: 15px;
-            text-align: center;
-        }
-
-        nav ul {
-            list-style-type: none;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2em;
-        }
-
-        nav a:hover {
-            color: #ff6f61;
-        }
-
-        /* Hero Section */
-        #hero {
-            background-color: #ff6f61;
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        #hero h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        #hero p {
-            font-size: 1.3em;
-            margin-bottom: 30px;
-        }
-
-        .cta-buttons {
-            margin-top: 20px;
-        }
-
-        .cta-buttons button {
-            background-color: white;
-            color: #ff6f61;
-            padding: 15px 30px;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2em;
-            margin: 0 10px;
-            border-radius: 5px;
-        }
-
-        .cta-buttons button:hover {
-            background-color: #f1f1f1;
-        }
-
-        /* How It Works Section */
-        #how-it-works {
-            padding: 50px 20px;
-            background-color: #fff;
-            text-align: center;
-        }
-
-        #how-it-works h2 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-        }
-
-        .steps {
             display: flex;
-            justify-content: center;
-            gap: 50px;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .step {
-            width: 200px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
         }
 
-        .step img {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 15px;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
         }
 
-        .step h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        footer ul {
-            list-style-type: none;
-        }
-
-        footer ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        footer ul li a {
+        .nav-links a {
             color: white;
             text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
-        footer ul li a:hover {
-            text-decoration: underline;
+        .nav-links a:hover {
+            color: #ffcc00;
         }
 
-        /* Small Device Responsiveness */
-        @media (max-width: 768px) {
-            .steps {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav ul {
-                padding: 0;
-            }
-
-            nav ul li {
-                display: block;
-                margin: 10px 0;
-            }
-
-            #hero h1 {
-                font-size: 2.5em;
-            }
+        /* Platform Section */
+        .platform-section {
+            padding: 5rem 5%;
+            text-align: center;
+            background-color: #eef2ff;
         }
+
+        .platform-section h2 {
+            font-size: 2.5rem;
+            color: #1a237e;
+            margin-bottom: 2rem;
+        }
+
+        .platform-section p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            display: inline-block;
+            width: 30%;
+            padding: 2rem;
+            background-color: white;
+            margin: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            color: #1a237e;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
     </style>
 </head>
+
 <body>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="marketplace.html">Marketplace</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="signin.html">Sign In</a></li>
-        </ul>
-    </nav>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#">InfluencerConnect</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="platform.html">Platform</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="hero">
-        <h1>One Platform, Numerous Tools</h1>
-        <p>Discover an end-to-end influencer marketing solution that helps you recruit talent, build your brand community, and analyze the ROI of your efforts – all within one easy-to-use platform.</p>
-        <div class="cta-buttons">
-            <button><a href="#learn-more">Learn More</a></button>
-            <button><a href="#start-trial">Start Your Trial</a></button>
+    <section class="platform-section">
+        <h2>Our Platform Features</h2>
+        <p>Discover the tools and features that help businesses connect with influencers.</p>
+
+        <div class="feature-card">
+            <h3>Advanced Search</h3>
+            <p>Find the right influencers based on niche, location, and engagement.</p>
         </div>
-    </section>
 
-    <!-- Expert Testimonials -->
-    <section id="testimonials">
-        <h2>Created by Experts, Valued by Professionals</h2>
-        <p>Explore how industry leaders worldwide acknowledge and trust our solution.</p>
-    </section>
-
-    <!-- Platform Solutions -->
-    <section id="platform-solutions">
-        <h2>Solutions That Guide Better Influencer Marketing Campaigns</h2>
-        <p>Discover the secret to cost-effective and measurable influencer-led campaigns with a customizable hub for research, organization, and reporting.</p>
-        <div class="tools">
-            <div class="tool">
-                <img src="icon-discover.png" alt="Influencer Discover">
-                <h3>Influencer Discover</h3>
-                <p>Create professional influencer recruitment programs.</p>
-            </div>
-            <div class="tool">
-                <img src="icon-irm.png" alt="Influencer Relationship Management">
-                <h3>Influencer Relationship Management</h3>
-                <p>Customize a database to meet the needs of your data.</p>
-            </div>
-            <div class="tool">
-                <img src="icon-campaign.png" alt="Campaign Manager">
-                <h3>Campaign Manager</h3>
-                <p>Filter and sort based on your campaign needs.</p>
-            </div>
-            <div class="tool">
-                <img src="icon-reports.png" alt="Campaign Reports">
-                <h3>Campaign Reports</h3>
-                <p>Measure and compare influencer performance.</p>
-            </div>
+        <div class="feature-card">
+            <h3>Campaign Management</h3>
+            <p>Easily manage and track your influencer marketing campaigns.</p>
         </div>
-    </section>
 
-    <!-- Success Story -->
-    <section id="success-story">
-        <h2>Success Story: PowderPeaks</h2>
-        <p>In 2023, PowderPeaks successfully executed its first influencer seeding campaign with the support of [Your Platform Name]. Read how we helped them recruit quality influencers and streamline their marketing efforts.</p>
-        <a href="#read-more">Read PowderPeak's Story</a>
-    </section>
-
-    <!-- The Platform Difference -->
-    <section id="platform-difference">
-        <h2>The [Your Platform Name] Difference</h2>
-        <div class="stats">
-            <div class="stat">
-                <h3>97%</h3>
-                <p>G2 Rating - Quality of Support</p>
-            </div>
-            <div class="stat">
-                <h3>94%</h3>
-                <p>G2 Rating - Usability</p>
-            </div>
-            <div class="stat">
-                <h3>94%</h3>
-                <p>Highest Rated Feature - Detailed Audience Stats</p>
-            </div>
+        <div class="feature-card">
+            <h3>Analytics</h3>
+            <p>Track the performance of your campaigns with detailed analytics and reporting.</p>
         </div>
-    </section>
 
-    <!-- Call to Action -->
-    <section id="cta">
-        <h2>Streamline Influencer Marketing with a Powerful Data-Driven Platform</h2>
-        <div class="cta-buttons">
-            <button><a href="#get-demo">Get Your Demo</a></button>
-            <button><a href="#start-trial">Start Your Trial</a></button>
-        </div>
     </section>
-
-    <!-- Who We Serve -->
-    <section id="who-we-serve">
-        <h2>Who We Serve</h2>
-        <p>We serve brands, agencies, and e-commerce businesses by providing tailored solutions to optimize influencer marketing efforts.</p>
-    </section>
-
-    <!-- Footer Section -->
-    <footer>
-        <ul>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#careers">Careers</a></li>
-            <li><a href="#resources">Resources</a></li>
-            <li><a href="#privacy-policy">Privacy Policy</a></li>
-        </ul>
-    </footer>
 
 </body>
+
 </html>
