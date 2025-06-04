@@ -1,147 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Influsynch - Connect With Real Influencers</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f9f9fb;
-    }
-    header {
-      background: #fff;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-    }
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #3a3a3a;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-    nav ul li {
-      position: relative;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-    nav ul li:hover > ul {
-      display: block;
-    }
-    nav ul ul {
-      display: none;
-      position: absolute;
-      top: 2rem;
-      left: 0;
-      background: white;
-      padding: 0.5rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      border-radius: 8px;
-    }
-    nav ul ul li {
-      padding: 0.5rem 1rem;
-    }
-    nav ul ul li a {
-      color: #555;
-    }
-
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 3rem 2rem;
-      background: linear-gradient(to right, #fdfcff, #f2f3f7);
-    }
-    .hero-text {
-      flex: 1;
-      padding-right: 2rem;
-    }
-    .hero-text h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #1f1f1f;
-    }
-    .hero-text p {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-      color: #555;
-    }
-    .cta-btn {
-      background: #6c5ce7;
-      color: white;
-      padding: 0.8rem 1.6rem;
-      border: none;
-      font-size: 1rem;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .cta-btn:hover {
-      background: #574b90;
-    }
-    .hero-image {
-      flex: 1;
-    }
-    .hero-image img {
-      max-width: 100%;
-      border-radius: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Influencer marketplace connecting brands and influencers.">
+    <title>Influencer Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header>
-  <div class="nav-container">
-    <div class="logo">Influsynch</div>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li>
-          <a href="#">Who We Serve</a>
-          <ul>
-            <li><a href="#">Brands</a></li>
-            <li><a href="#">Agencies</a></li>
-            <li><a href="#">Facebook Influencers</a></li>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">YouTube</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Platform</a></li>
-        <li><a href="#">Features</a></li>
-        <li><a href="#">Resources</a></li>
-        <li><a href="#">Login</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#marketplace">Marketplace</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#signin">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<section class="hero">
-  <div class="hero-text">
-    <h1>Connect with Influencers Across All Platforms</h1>
-    <p>Discover, analyze, and collaborate with the right creators from Instagram, YouTube & now Facebook — all in one AI-powered marketplace.</p>
-    <button class="cta-btn">Get Started</button>
-  </div>
-  <div class="hero-image">
-    <!-- Replace this with AI-generated image -->
-    <img src="your-generated-image.jpg" alt="Influencer illustration"/>
-  </div>
-</section>
+    <!-- Hero Section -->
+    <section id="hero">
+        <h1>Connecting Influencers with Brands</h1>
+        <p>Your next collaboration is just a click away.</p>
+        <div class="cta-buttons">
+            <button><a href="#influencers">Join as an Influencer</a></button>
+            <button><a href="#businesses">Join as a Business</a></button>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <img src="step1-icon.png" alt="Step 1">
+                <h3>Step 1</h3>
+                <p>Sign up and create your profile.</p>
+            </div>
+            <div class="step">
+                <img src="step2-icon.png" alt="Step 2">
+                <h3>Step 2</h3>
+                <p>Find business opportunities or influencers.</p>
+            </div>
+            <div class="step">
+                <img src="step3-icon.png" alt="Step 3">
+                <h3>Step 3</h3>
+                <p>Connect and collaborate.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Influencers and Businesses Section -->
+    <section id="featured">
+        <h2>Featured Influencers & Businesses</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="influencer1.jpg" alt="Influencer 1">
+                <p>Influencer Name</p>
+            </div>
+            <div class="card">
+                <img src="business1.jpg" alt="Business 1">
+                <p>Business Name</p>
+            </div>
+            <!-- Add more cards as needed -->
+        </div>
+    </section>
+
+    <!-- Marketplace Preview -->
+    <section id="marketplace">
+        <h2>Explore the Marketplace</h2>
+        <div class="grid">
+            <div class="item">
+                <h3>Brand 1</h3>
+                <p>Looking for influencers in fashion.</p>
+            </div>
+            <!-- Add more marketplace items -->
+        </div>
+        <button><a href="#view-more">View More</a></button>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2>What People Are Saying</h2>
+        <blockquote>
+            <p>"This platform helped me find the perfect influencer for my brand!"</p>
+            <cite>- Business Owner</cite>
+        </blockquote>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Influencer Marketplace. All Rights Reserved.</p>
+        <ul>
+            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </footer>
 
 </body>
 </html>
