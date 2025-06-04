@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Influsynch - Connect With Real Influencers</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9fb;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #3a3a3a;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul li {
+      position: relative;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    nav ul li:hover > ul {
+      display: block;
+    }
+    nav ul ul {
+      display: none;
+      position: absolute;
+      top: 2rem;
+      left: 0;
+      background: white;
+      padding: 0.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    nav ul ul li {
+      padding: 0.5rem 1rem;
+    }
+    nav ul ul li a {
+      color: #555;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 2rem;
+      background: linear-gradient(to right, #fdfcff, #f2f3f7);
+    }
+    .hero-text {
+      flex: 1;
+      padding-right: 2rem;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #1f1f1f;
+    }
+    .hero-text p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: #555;
+    }
+    .cta-btn {
+      background: #6c5ce7;
+      color: white;
+      padding: 0.8rem 1.6rem;
+      border: none;
+      font-size: 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .cta-btn:hover {
+      background: #574b90;
+    }
+    .hero-image {
+      flex: 1;
+    }
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <div class="logo">Influsynch</div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li>
+          <a href="#">Who We Serve</a>
+          <ul>
+            <li><a href="#">Brands</a></li>
+            <li><a href="#">Agencies</a></li>
+            <li><a href="#">Facebook Influencers</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">YouTube</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Platform</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Login</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Connect with Influencers Across All Platforms</h1>
+    <p>Discover, analyze, and collaborate with the right creators from Instagram, YouTube & now Facebook — all in one AI-powered marketplace.</p>
+    <button class="cta-btn">Get Started</button>
+  </div>
+  <div class="hero-image">
+    <!-- Replace this with AI-generated image -->
+    <img src="your-generated-image.jpg" alt="Influencer illustration"/>
+  </div>
+</section>
+
+</body>
+</html>
