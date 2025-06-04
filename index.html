@@ -1,49 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A marketplace for influencers and businesses to connect and grow.">
+    <meta name="author" content="Your Name">
     <title>Influencer Marketplace</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> <!-- External stylesheet for custom styling -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- Font -->
+    <script src="script.js" defer></script> <!-- External JavaScript -->
 </head>
-<body>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="platform.html">Platform</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="marketplace.html">Marketplace</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="signin.html">Sign In</a></li>
-        </ul>
-    </nav>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#">InfluencerConnect</a> <!-- Change with your website name -->
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#signup">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section id="hero">
+    <section class="hero">
         <div class="hero-content">
-            <h1>Empowering Connections: Your Ultimate Influencer Marketing Hub</h1>
-            <p>Maximize your influencer relationship management strategy with solid recruitment, key data, and seamless communication – all in one dynamic platform.</p>
-            <div class="cta-buttons">
-                <button><a href="platform.html">Learn More</a></button>
-                <button><a href="signin.html">Start Your Trial</a></button>
-            </div>
-        </div>
-        <div class="hero-image">
-            <img src="hp.png" alt="Platform Screenshot">
+            <h1>Connect with Top Influencers</h1>
+            <p>Empowering businesses to collaborate with influencers and grow their brands.</p>
+            <a href="#signup" class="cta-button">Join Now</a>
         </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer>
-        <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="careers.html">Careers</a></li>
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        </ul>
-    </footer>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>InfluencerConnect is a platform designed to help businesses and influencers connect. Discover opportunities, grow your brand, and collaborate to reach your full potential.</p>
+    </section>
 
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service-card">
+            <h3>Influencer Marketing</h3>
+            <p>Connect your brand with top influencers to maximize reach and engagement.</p>
+        </div>
+        <div class="service-card">
+            <h3>Business Partnerships</h3>
+            <p>Discover and collaborate with businesses to grow together.</p>
+        </div>
+        <div class="service-card">
+            <h3>SEO & Content Strategy</h3>
+            <p>Enhance your online presence with custom SEO and content strategies.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or want to get started, feel free to reach out!</p>
+        <form action="submit_form.php" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 InfluencerConnect. All rights reserved.</p>
+    </footer>
 </body>
+
 </html>
