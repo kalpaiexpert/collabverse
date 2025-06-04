@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - InfluenceConnect</title>
     <style>
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -93,14 +95,21 @@
         .signup-link a:hover {
             text-decoration: underline;
         }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 1rem;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="login-container">
         <div class="login-form">
             <h2>Login to Your Account</h2>
-            <form action="#" method="POST">
+            <form id="loginForm">
                 <div class="input-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Enter your email" required>
@@ -114,8 +123,44 @@
                     <p>Don't have an account? <a href="signup.html">Sign up</a></p>
                 </div>
             </form>
+            <div class="error-message" id="error-message"></div>
         </div>
     </div>
 
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevents the form from submitting immediately
+
+            // Clear any previous error messages
+            document.getElementById("error-message").textContent = "";
+
+            // Get user input values
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Simple client-side validation (you can extend this)
+            if (!email || !password) {
+                document.getElementById("error-message").textContent = "Please fill out all fields.";
+                return;
+            }
+
+            // For this example, I'm simply logging the values
+            console.log("Email:", email);
+            console.log("Password:", password);
+
+            // Here you can implement your backend authentication logic.
+            // This could involve sending an API request to check the email and password.
+
+            // For now, simulate successful login:
+            if (email === "user@example.com" && password === "password123") {
+                alert("Login successful!");
+                window.location.href = "dashboard.html"; // Redirect to dashboard after successful login
+            } else {
+                document.getElementById("error-message").textContent = "Invalid credentials, please try again.";
+            }
+        });
+    </script>
+
 </body>
+
 </html>
