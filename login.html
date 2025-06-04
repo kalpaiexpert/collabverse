@@ -128,8 +128,9 @@
     </div>
 
     <script>
+        // Attach event listener to form submission
         document.getElementById("loginForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevents the form from submitting immediately
+            event.preventDefault(); // Prevent the form from submitting immediately
 
             // Clear any previous error messages
             document.getElementById("error-message").textContent = "";
@@ -144,18 +145,13 @@
                 return;
             }
 
-            // For this example, I'm simply logging the values
-            console.log("Email:", email);
-            console.log("Password:", password);
-
-            // Here you can implement your backend authentication logic.
-            // This could involve sending an API request to check the email and password.
-
-            // For now, simulate successful login:
+            // Simulating successful login (use actual backend logic here)
             if (email === "user@example.com" && password === "password123") {
+                // For now, show success and redirect
                 alert("Login successful!");
-                window.location.href = "dashboard.html"; // Redirect to dashboard after successful login
+                window.location.href = "dashboard.html"; // Redirect to the dashboard page
             } else {
+                // If login fails, show an error message
                 document.getElementById("error-message").textContent = "Invalid credentials, please try again.";
             }
         });
