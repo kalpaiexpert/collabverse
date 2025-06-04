@@ -10,7 +10,6 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     color: #333;
-    line-height: 1.6;
 }
 
 /* Navigation Bar */
@@ -22,6 +21,7 @@ nav {
 
 nav ul {
     list-style-type: none;
+    margin: 0;
 }
 
 nav ul li {
@@ -41,19 +41,26 @@ nav a:hover {
 
 /* Hero Section */
 #hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #ff6f61;
     color: white;
-    text-align: center;
     padding: 100px 20px;
+    position: relative;
 }
 
-#hero h1 {
+.hero-content {
+    max-width: 50%;
+}
+
+.hero-content h1 {
     font-size: 3em;
     margin-bottom: 20px;
 }
 
-#hero p {
-    font-size: 1.3em;
+.hero-content p {
+    font-size: 1.2em;
     margin-bottom: 30px;
 }
 
@@ -76,44 +83,12 @@ nav a:hover {
     background-color: #f1f1f1;
 }
 
-/* How It Works Section */
-#how-it-works {
-    padding: 50px 20px;
-    background-color: #fff;
-    text-align: center;
+.hero-image img {
+    max-width: 45%;
+    height: auto;
 }
 
-#how-it-works h2 {
-    font-size: 2.5em;
-    margin-bottom: 30px;
-}
-
-.steps {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-}
-
-.step {
-    width: 200px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.step img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 15px;
-}
-
-.step h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-/* Footer */
+/* Footer Section */
 footer {
     background-color: #333;
     color: white;
@@ -142,9 +117,27 @@ footer ul li a:hover {
 
 /* Small Device Responsiveness */
 @media (max-width: 768px) {
-    .steps {
+    #hero {
         flex-direction: column;
-        align-items: center;
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 1.1em;
+    }
+
+    .hero-image img {
+        max-width: 80%;
     }
 
     nav ul {
@@ -154,9 +147,5 @@ footer ul li a:hover {
     nav ul li {
         display: block;
         margin: 10px 0;
-    }
-
-    #hero h1 {
-        font-size: 2.5em;
     }
 }
