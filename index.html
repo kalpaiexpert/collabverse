@@ -16,6 +16,8 @@
         nav {
             background-color: #111;
             padding: 10px;
+            z-index: 10;
+            position: relative;
         }
 
         nav ul {
@@ -30,6 +32,11 @@
             padding: 10px 20px;
             color: white;
             cursor: pointer;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
         }
 
         nav ul li:hover {
@@ -79,7 +86,6 @@
             font-size: 1.2em;
             color: #555;
         }
-
     </style>
 </head>
 <body>
@@ -87,21 +93,20 @@
     <!-- Navigation Bar -->
     <nav>
         <ul>
-            <li>Home</li>
+            <li><a href="index.html">Home</a></li>
             <li>Who We Serve
                 <div class="dropdown">
                     <ul>
-                        <li><a href="#">Link 1</a></li>
-                        <li><a href="#">Link 2</a></li>
-                        <li><a href="#">Link 3</a></li>
-                        <li><a href="#">Link 4</a></li>
+                        <li><a href="who-we-serve.html">For Brands</a></li>
+                        <li><a href="who-we-serve.html">For Agencies</a></li>
+                        <li><a href="who-we-serve.html">For Influencers</a></li>
                     </ul>
                 </div>
             </li>
-            <li>Platform</li>
-            <li>Company</li>
-            <li>Resources</li>
-            <li>Pricing</li>
+            <li><a href="platform.html">Platform</a></li>
+            <li><a href="company.html">Company</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
         </ul>
     </nav>
 
