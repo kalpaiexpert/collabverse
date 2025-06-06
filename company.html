@@ -46,6 +46,9 @@
 </head>
 <body>
 
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+
     <!-- Hero Section -->
     <div class="hero">
         <h1>About Our Company</h1>
@@ -58,5 +61,14 @@
         <p>To make influencer marketing accessible, data-driven, and scalable for all businesses.</p>
     </div>
 
+    <!-- JavaScript to Load Navbar -->
+    <script>
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            })
+            .catch(err => console.log('Error loading the navbar:', err));
+    </script>
 </body>
 </html>
