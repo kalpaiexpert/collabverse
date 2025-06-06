@@ -6,73 +6,152 @@
   <title>Influsynch | Home</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    * {
+      box-sizing: border-box;
+    }
     body {
-      margin: 0; font-family: 'Inter', sans-serif; background:#f9fafb; color:#1f2937; scroll-behavior: smooth;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background:#f9fafb;
+      color:#1f2937;
+      scroll-behavior: smooth;
     }
     header {
-      position: sticky; top: 0; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.05); z-index: 1000;
+      position: sticky;
+      top: 0;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      z-index: 1000;
     }
     .navbar {
-      display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: auto;
     }
     .logo {
-      font-size: 1.5rem; font-weight: 700; color: #3b82f6;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #3b82f6;
+      user-select: none;
     }
     .nav-links {
-      display: flex; gap: 1.5rem; align-items: center;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
     }
-    .nav-item { position: relative; }
+    .nav-item {
+      position: relative;
+      user-select: none;
+    }
     .nav-link {
-      font-weight: 500; padding: 0.5rem; border-radius: 6px;
-      transition: background 0.3s ease; cursor: pointer; color: #1f2937; text-decoration: none; display: inline-block;
+      font-weight: 500;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #1f2937;
+      text-decoration: none;
+      display: inline-block;
+      user-select: none;
+      transition: background-color 0.3s ease;
     }
-    .nav-link:hover { background: #e0f2fe; }
+    .nav-link:hover {
+      background: #e0f2fe;
+    }
+    /* Dropdown Menu */
     .dropdown {
-      display: none; position: absolute; top: 2.5rem; left: 0; background: white;
-      border-radius: 8px; box-shadow: 0 6px 12px rgba(0,0,0,0.08); min-width: 160px; z-index:1100;
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+      min-width: 180px;
+      z-index: 1100;
+      user-select: none;
     }
-    .nav-item:hover .dropdown { display: block; }
     .dropdown a {
-      display: block; padding: 0.75rem 1rem; text-decoration: none; color: #1f2937; cursor: pointer;
+      display: block;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      color: #1f2937;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      user-select: none;
     }
-    .dropdown a:hover { background: #f1f5f9; }
+    .dropdown a:hover {
+      background: #f1f5f9;
+    }
+    /* Show dropdown when parent has .open */
+    .nav-item.open > .dropdown {
+      display: block;
+    }
+    /* Buttons */
     .hero {
-      padding: 6rem 2rem; text-align: center;
+      padding: 6rem 2rem;
+      text-align: center;
       background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
       color: white;
+      user-select: none;
     }
     .hero h1 {
-      font-size: 3rem; font-weight: 700; margin-bottom: 1rem;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
     }
     .hero p {
-      font-size: 1.25rem; max-width: 700px; margin: 0 auto 2rem;
+      font-size: 1.25rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
       opacity: 0.85;
     }
     .cta-buttons {
-      display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap;
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      user-select: none;
     }
-    .btn-primary, .btn-secondary {
-      padding: 0.75rem 2rem; font-weight: 600; border-radius: 8px;
-      cursor: pointer; border: none; transition: background 0.3s ease;
+    button {
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+      transition: background 0.3s ease;
       font-size: 1rem;
+      user-select: none;
     }
     .btn-primary {
-      background: white; color: #3b82f6;
+      background: white;
+      color: #3b82f6;
     }
     .btn-primary:hover {
       background: #e0e7ff;
     }
     .btn-secondary {
-      background: transparent; border: 2px solid white; color: white;
+      background: transparent;
+      border: 2px solid white;
+      color: white;
     }
     .btn-secondary:hover {
       background: rgba(255 255 255 / 0.2);
     }
+    /* Section */
     .section {
-      max-width: 1100px; margin: 4rem auto; padding: 0 2rem;
+      max-width: 1100px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+      user-select: none;
     }
     .section h2 {
-      font-size: 2rem; color: #2563eb; margin-bottom: 2rem; text-align: center;
+      font-size: 2rem;
+      color: #2563eb;
+      margin-bottom: 2rem;
+      text-align: center;
     }
     .features-grid {
       display: grid;
@@ -80,29 +159,76 @@
       gap: 2rem;
     }
     .feature-card {
-      background: white; padding: 2rem; border-radius: 1rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center;
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-align: center;
       transition: transform 0.3s ease;
+      user-select: none;
     }
     .feature-card:hover {
       transform: translateY(-6px);
     }
     .feature-icon {
-      font-size: 3rem; margin-bottom: 1rem; color: #3b82f6;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #3b82f6;
+      user-select: none;
     }
     .feature-title {
-      font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
     }
     .feature-desc {
-      font-size: 1rem; color: #4b5563;
+      font-size: 1rem;
+      color: #4b5563;
     }
     footer {
-      background: #1f2937; color: white; text-align: center; padding: 2rem 1rem; margin-top: 4rem;
+      background: #1f2937;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
       font-size: 0.9rem;
+      user-select: none;
     }
+    /* Mobile */
     @media (max-width: 768px) {
       .nav-links {
         display: none;
+      }
+      .nav-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 1.5rem;
+        user-select: none;
+      }
+      .nav-links.mobile-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 2rem;
+        background: white;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        width: 200px;
+        padding: 1rem 0;
+        z-index: 1100;
+      }
+      .nav-item.open > .dropdown {
+        position: relative;
+        top: 0;
+        box-shadow: none;
+        min-width: auto;
+      }
+      .dropdown a {
+        padding-left: 2rem;
+      }
+      .nav-link {
+        padding: 0.75rem 1.5rem;
       }
     }
   </style>
@@ -110,78 +236,133 @@
 <body>
 
 <header>
-  <div class="navbar">
-    <div class="logo"><a href="index.html" style="color:#3b82f6; text-decoration:none;">Influsynch</a></div>
-    <nav class="nav-links">
-      <div class="nav-item"><a class="nav-link" href="index.html">Home</a></div>
-      <div class="nav-item">
-        <a class="nav-link" href="platform.html">Platform</a>
-        <div class="dropdown">
-          <a href="platform-overview.html">Overview</a>
-          <a href="platform-ai-tools.html">AI Tools</a>
-          <a href="platform-campaigns.html">Campaigns</a>
+  <div class="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="logo" tabindex="0"><a href="index.html" style="color:#3b82f6; text-decoration:none;">Influsynch</a></div>
+    <nav>
+      <div class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</div>
+      <div class="nav-links" role="menubar">
+        <div class="nav-item" role="none">
+          <a href="index.html" class="nav-link" role="menuitem" tabindex="0">Home</a>
+        </div>
+        <div class="nav-item" role="none">
+          <a href="platform.html" class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Platform ▼</a>
+          <div class="dropdown" role="menu" aria-label="Platform submenu">
+            <a href="platform-overview.html" role="menuitem" tabindex="0">Overview</a>
+            <a href="platform-ai-tools.html" role="menuitem" tabindex="0">AI Tools</a>
+            <a href="platform-campaigns.html" role="menuitem" tabindex="0">Campaigns</a>
+          </div>
+        </div>
+        <div class="nav-item" role="none">
+          <a href="whoweserve.html" class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Who We Serve ▼</a>
+          <div class="dropdown" role="menu" aria-label="Who We Serve submenu">
+            <a href="brands.html" role="menuitem" tabindex="0">Brands</a>
+            <a href="agencies.html" role="menuitem" tabindex="0">Agencies</a>
+            <a href="influencers.html" role="menuitem" tabindex="0">Influencers</a>
+          </div>
+        </div>
+        <div class="nav-item" role="none">
+          <a href="features.html" class="nav-link" role="menuitem" tabindex="0">Features</a>
+        </div>
+        <div class="nav-item" role="none">
+          <a href="resources.html" class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Resources ▼</a>
+          <div class="dropdown" role="menu" aria-label="Resources submenu">
+            <a href="blog.html" role="menuitem" tabindex="0">Blog</a>
+            <a href="helpcenter.html" role="menuitem" tabindex="0">Help Center</a>
+          </div>
+        </div>
+        <div class="nav-item" role="none">
+          <a href="about.html" class="nav-link" role="menuitem" tabindex="0">About</a>
+        </div>
+        <div class="nav-item" role="none">
+          <a href="contact.html" class="nav-link" role="menuitem" tabindex="0">Contact</a>
         </div>
       </div>
-      <div class="nav-item">
-        <a class="nav-link" href="whoweserve.html">Who We Serve</a>
-        <div class="dropdown">
-          <a href="brands.html">Brands</a>
-          <a href="agencies.html">Agencies</a>
-          <a href="influencers.html">Influencers</a>
-        </div>
-      </div>
-      <div class="nav-item"><a class="nav-link" href="features.html">Features</a></div>
-      <div class="nav-item">
-        <a class="nav-link" href="resources.html">Resources</a>
-        <div class="dropdown">
-          <a href="blog.html">Blog</a>
-          <a href="helpcenter.html">Help Center</a>
-        </div>
-      </div>
-      <div class="nav-item"><a class="nav-link" href="about.html">About</a></div>
-      <div class="nav-item"><a class="nav-link" href="contact.html">Contact</a></div>
     </nav>
   </div>
 </header>
 
-<section class="hero">
+<section class="hero" role="banner">
   <h1>Connect. Collaborate. Grow.</h1>
   <p>Your all-in-one influencer marketing platform to discover creators, manage campaigns, and analyze performance.</p>
   <div class="cta-buttons">
-    <button class="btn-primary">Get Started</button>
-    <button class="btn-secondary">Learn More</button>
+    <button class="btn-primary" onclick="alert('Get Started clicked!')">Get Started</button>
+    <button class="btn-secondary" onclick="alert('Learn More clicked!')">Learn More</button>
   </div>
 </section>
 
-<section class="section">
-  <h2>Why Choose Influsynch?</h2>
+<section class="section" aria-labelledby="whychoose">
+  <h2 id="whychoose">Why Choose Influsynch?</h2>
   <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">🔍</div>
-      <div class="feature-title">Powerful Search</div>
-      <div class="feature-desc">Find the perfect influencers with AI-driven search filters and audience insights.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">📊</div>
-      <div class="feature-title">Real-Time Analytics</div>
-      <div class="feature-desc">Track your campaigns' impact with dynamic dashboards and detailed reports.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">⚙️</div>
-      <div class="feature-title">Campaign Manager</div>
-      <div class="feature-desc">Organize, launch, and monitor your influencer collaborations seamlessly.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🤝</div>
-      <div class="feature-title">Influencer Discovery</div>
-      <div class="feature-desc">Discover trending creators across platforms to elevate your brand reach.</div>
-    </div>
+    <article class="feature-card" tabindex="0">
+      <div class="feature-icon" aria-hidden="true">🔍</div>
+      <h3 class="feature-title">Powerful Search</h3>
+      <p class="feature-desc">Find the perfect influencers with AI-driven search filters and audience insights.</p>
+    </article>
+    <article class="feature-card" tabindex="0">
+      <div class="feature-icon" aria-hidden="true">📊</div>
+      <h3 class="feature-title">Real-Time Analytics</h3>
+      <p class="feature-desc">Track your campaigns' impact with dynamic dashboards and detailed reports.</p>
+    </article>
+    <article class="feature-card" tabindex="0">
+      <div class="feature-icon" aria-hidden="true">⚙️</div>
+      <h3 class="feature-title">Campaign Manager</h3>
+      <p class="feature-desc">Organize, launch, and monitor your influencer collaborations seamlessly.</p>
+    </article>
+    <article class="feature-card" tabindex="0">
+      <div class="feature-icon" aria-hidden="true">🤝</div>
+      <h3 class="feature-title">Influencer Discovery</h3>
+      <p class="feature-desc">Discover trending creators across platforms to elevate your brand reach.</p>
+    </article>
   </div>
 </section>
 
 <footer>
   &copy; 2025 Influsynch. All rights reserved.
 </footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  navToggle.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+    navToggle.setAttribute('aria-expanded', !expanded);
+    navLinks.classList.toggle('mobile-open');
+  });
+
+  // Dropdown toggles on click for accessibility and mobile devices
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', e => {
+      e.preventDefault();
+      const parent = toggle.parentElement;
+
+      // Close others
+      dropdownToggles.forEach(otherToggle => {
+        if(otherToggle !== toggle) {
+          otherToggle.parentElement.classList.remove('open');
+          otherToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Toggle current
+      const isOpen = parent.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen);
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', e => {
+    if(!e.target.closest('.nav-item')) {
+      dropdownToggles.forEach(toggle => {
+        toggle.parentElement.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
