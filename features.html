@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Influsynch | Features</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #1f2937;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #3b82f6;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      padding: 0.5rem;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-link:hover {
+      background: #e0f2fe;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 2.5rem;
+      left: 0;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+      min-width: 160px;
+    }
+
+    .nav-item:hover .dropdown {
+      display: block;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      color: #1f2937;
+    }
+
+    .dropdown a:hover {
+      background: #f1f5f9;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(to right, #e0f2fe, #f0f9ff);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #1d4ed8;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #4b5563;
+    }
+
+    .features-section {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-size: 1.25rem;
+      color: #2563eb;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-desc {
+      color: #4b5563;
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #1f2937;
+      color: white;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <div class="logo">Influsynch</div>
+      <nav class="nav-links">
+        <div class="nav-item"><a class="nav-link" href="#">Home</a></div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Platform</a>
+          <div class="dropdown">
+            <a href="#">Overview</a>
+            <a href="#">AI Tools</a>
+            <a href="#">Campaigns</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Who We Serve</a>
+          <div class="dropdown">
+            <a href="#">Brands</a>
+            <a href="#">Agencies</a>
+            <a href="#">Influencers</a>
+          </div>
+        </div>
+        <div class="nav-item"><a class="nav-link" href="#">Features</a></div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Resources</a>
+          <div class="dropdown">
+            <a href="#">Blog</a>
+            <a href="#">Help Center</a>
+          </div>
+        </div>
+        <div class="nav-item"><a class="nav-link" href="#">About</a></div>
+        <div class="nav-item"><a class="nav-link" href="#">Contact</a></div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Explore Our Features</h1>
+    <p>Powerful tools to help you discover influencers, manage campaigns, calculate ROI, and generate detailed reports effortlessly.</p>
+  </section>
+
+  <section class="features-section">
+    <div class="feature-card">
+      <div class="feature-icon">🔍</div>
+      <div class="feature-title">Influencer Search</div>
+      <div class="feature-desc">Find the right creators across platforms using AI-powered filters like engagement rate, audience location, niche, and more.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <div class="feature-title">Campaign Tracking</div>
+      <div class="feature-desc">Monitor every detail of your influencer campaigns, from planning to performance analytics, all in real-time.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧮</div>
+      <div class="feature-title">ROI Calculator</div>
+      <div class="feature-desc">Easily estimate and visualize the return on investment for your campaigns with built-in cost vs performance tools.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📈</div>
+      <div class="feature-title">Reporting Tools</div>
+      <div class="feature-desc">Generate professional reports with custom metrics and shareable dashboards to keep stakeholders informed.</div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Influsynch. All rights reserved.
+  </footer>
+
+</body>
+</html>
