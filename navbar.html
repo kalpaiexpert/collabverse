@@ -1,18 +1,121 @@
-<nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li>Who We Serve
-            <div class="dropdown">
-                <ul>
-                    <li><a href="who-we-serve.html">For Brands</a></li>
-                    <li><a href="who-we-serve.html">For Agencies</a></li>
-                    <li><a href="who-we-serve.html">For Influencers</a></li>
-                </ul>
-            </div>
-        </li>
-        <li><a href="platform.html">Platform</a></li>
-        <li><a href="company.html">Company</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
-    </ul>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Influencity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: #111;
+            padding: 10px 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        nav ul li {
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        nav ul li:hover {
+            background-color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #ff6b81, #ff4e5f);
+            color: white;
+            text-align: center;
+            padding: 150px 20px 50px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+
+        .hero .cta-btn {
+            background-color: #ff6b81;
+            padding: 15px 30px;
+            color: white;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .hero .cta-btn:hover {
+            background-color: #ff4e5f;
+        }
+
+        .hero img {
+            width: 50%;
+            max-width: 600px;
+            margin-top: 30px;
+        }
+
+        /* Add some space below the hero section */
+        .spacer {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Empowering Connections: Your Ultimate Influencer Marketing Hub</h1>
+        <p>Maximize your influencer relationship management strategy with solid recruitment, key data, and seamless communication - all in one dynamic platform.</p>
+        <a href="#" class="cta-btn">Start Your Trial</a>
+        <img src="https://via.placeholder.com/600x400" alt="Influencer Marketing Dashboard">
+    </div>
+
+    <!-- Spacer for layout -->
+    <div class="spacer"></div>
+
+    <!-- JavaScript to Load Navbar -->
+    <script>
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            })
+            .catch(err => console.log('Error loading the navbar:', err));
+    </script>
+</body>
+</html>
