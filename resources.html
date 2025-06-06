@@ -1,292 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Influsynch | Resources</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Influencity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f9fafb;
-      color: #1f2937;
-      scroll-behavior: smooth;
-    }
+        .hero {
+            background-color: #f7f7f7;
+            padding: 50px;
+            text-align: center;
+        }
 
-    header {
-      position: sticky;
-      top: 0;
-      background-color: white;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      z-index: 1000;
-    }
+        .hero h1 {
+            font-size: 3em;
+            color: #333;
+        }
 
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-    }
+        .hero p {
+            font-size: 1.2em;
+            color: #555;
+        }
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #3b82f6;
-    }
+        .resources {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 30px;
+            justify-content: center;
+        }
 
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
+        .resources div {
+            width: 300px;
+            margin: 10px;
+            padding: 20px;
+            background-color: #eee;
+            text-align: center;
+        }
 
-    .nav-item {
-      position: relative;
-    }
+        .resources h3 {
+            font-size: 2em;
+            color: #333;
+        }
 
-    .nav-link {
-      font-weight: 500;
-      padding: 0.5rem;
-      border-radius: 6px;
-      transition: background 0.3s ease;
-      cursor: pointer;
-      color: #1f2937;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .nav-link:hover {
-      background: #e0f2fe;
-    }
-
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: 2.5rem;
-      left: 0;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-      min-width: 160px;
-      z-index: 1100;
-    }
-
-    .nav-item:hover .dropdown {
-      display: block;
-    }
-
-    .dropdown a {
-      display: block;
-      padding: 0.75rem 1rem;
-      text-decoration: none;
-      color: #1f2937;
-      cursor: pointer;
-    }
-
-    .dropdown a:hover {
-      background: #f1f5f9;
-    }
-
-    .hero {
-      padding: 4rem 2rem;
-      text-align: center;
-      background: linear-gradient(to right, #dbeafe, #f0f9ff);
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #1d4ed8;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
-      color: #4b5563;
-    }
-
-    .section {
-      padding: 3rem 2rem;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .section h2 {
-      font-size: 1.8rem;
-      color: #2563eb;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-    }
-
-    .blog-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease;
-    }
-
-    .blog-card:hover {
-      transform: translateY(-6px);
-    }
-
-    .blog-icon {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      color: #1d4ed8;
-    }
-
-    .blog-card h3 {
-      margin: 0.5rem 0;
-      font-size: 1.2rem;
-    }
-
-    .blog-card p {
-      font-size: 0.95rem;
-      color: #4b5563;
-    }
-
-    .help-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .help-box {
-      background: white;
-      padding: 1.5rem;
-      border-left: 4px solid #3b82f6;
-      border-radius: 0.75rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
-      transition: background 0.3s ease;
-    }
-
-    .help-box:hover {
-      background: #f0f9ff;
-    }
-
-    .help-box h4 {
-      margin: 0;
-      font-size: 1.1rem;
-      color: #1d4ed8;
-    }
-
-    .help-box p {
-      font-size: 0.9rem;
-      margin-top: 0.3rem;
-      color: #4b5563;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #1f2937;
-      color: white;
-      margin-top: 3rem;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-    }
-  </style>
+        .resources p {
+            color: #555;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <div class="navbar">
-      <div class="logo"><a href="index.html" style="color:#3b82f6; text-decoration:none;">Influsynch</a></div>
-      <nav class="nav-links">
-        <div class="nav-item"><a class="nav-link" href="index.html">Home</a></div>
-        <div class="nav-item">
-          <a class="nav-link" href="platform.html">Platform</a>
-          <div class="dropdown">
-            <a href="platform-overview.html">Overview</a>
-            <a href="platform-ai-tools.html">AI Tools</a>
-            <a href="platform-campaigns.html">Campaigns</a>
-          </div>
-        </div>
-        <div class="nav-item">
-          <a class="nav-link" href="whoweserve.html">Who We Serve</a>
-          <div class="dropdown">
-            <a href="brands.html">Brands</a>
-            <a href="agencies.html">Agencies</a>
-            <a href="influencers.html">Influencers</a>
-          </div>
-        </div>
-        <div class="nav-item"><a class="nav-link" href="features.html">Features</a></div>
-        <div class="nav-item">
-          <a class="nav-link" href="resources.html">Resources</a>
-          <div class="dropdown">
-            <a href="blog.html">Blog</a>
-            <a href="helpcenter.html">Help Center</a>
-          </div>
-        </div>
-        <div class="nav-item"><a class="nav-link" href="about.html">About</a></div>
-        <div class="nav-item"><a class="nav-link" href="contact.html">Contact</a></div>
-      </nav>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Resources</h1>
+        <p>Learn more about influencer marketing and our platform.</p>
     </div>
-  </header>
 
-  <section class="hero">
-    <h1>Resources</h1>
-    <p>Explore our latest insights, how-to guides, and support center to level up your influencer marketing strategy.</p>
-  </section>
-
-  <section class="section">
-    <h2>From Our Blog</h2>
-    <div class="blog-grid">
-      <div class="blog-card">
-        <div class="blog-icon">🧠</div>
-        <h3>Using AI for Influencer Discovery</h3>
-        <p>Discover how artificial intelligence is transforming how brands connect with creators.</p>
-      </div>
-      <div class="blog-card">
-        <div class="blog-icon">📈</div>
-        <h3>Tracking Campaign ROI</h3>
-        <p>Tips and tools for measuring the true impact of your influencer campaigns.</p>
-      </div>
-      <div class="blog-card">
-        <div class="blog-icon">🎯</div>
-        <h3>Micro vs Macro Influencers</h3>
-        <p>Choosing the right creator for your brand strategy – what the data says.</p>
-      </div>
+    <!-- Resources List -->
+    <div class="resources">
+        <div>
+            <h3>Blog</h3>
+            <p>Read our latest posts on influencer marketing trends and tips.</p>
+        </div>
+        <div>
+            <h3>Case Studies</h3>
+            <p>Explore successful campaigns and learn from industry leaders.</p>
+        </div>
+        <div>
+            <h3>Guides</h3>
+            <p>Step-by-step guides to help you get the most out of influencer marketing.</p>
+        </div>
     </div>
-  </section>
-
-  <section class="section">
-    <h2>Help Center</h2>
-    <div class="help-grid">
-      <div class="help-box">
-        <h4>How do I start a campaign?</h4>
-        <p>Step-by-step guide to launching your first influencer collaboration.</p>
-      </div>
-      <div class="help-box">
-        <h4>Understanding your dashboard</h4>
-        <p>Get insights into how to read analytics and improve your results.</p>
-      </div>
-      <div class="help-box">
-        <h4>Billing and subscriptions</h4>
-        <p>Everything you need to know about your plan and invoicing.</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 Influsynch. All rights reserved.
-  </footer>
 
 </body>
 </html>
