@@ -1,122 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Influencity</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Influencity - Clone</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+    }
+    .top-banner {
+      background: #ffc107;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+    nav {
+      background: #0a0a0a;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffc107;
+    }
 
-        /* Navbar */
-        nav {
-            background-color: #111;
-            padding: 10px 50px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 80px 40px 60px;
+      background: linear-gradient(to right, #f72585, #b5179e);
+      color: white;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .hero-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      max-width: 600px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+    .hero-buttons a {
+      padding: 12px 25px;
+      background: white;
+      color: #b5179e;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      margin-right: 15px;
+      transition: background 0.3s;
+    }
+    .hero-buttons a:hover {
+      background: #f0f0f0;
+    }
+    .hero-image {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+    }
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 12px;
+    }
 
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: flex-start;
-        }
+    section {
+      padding: 80px 40px;
+      text-align: center;
+    }
+    section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+    section p {
+      font-size: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-        nav ul li {
-            padding: 10px 20px;
-            color: white;
-            cursor: pointer;
-        }
+    .pricing {
+      background: #f8f8f8;
+    }
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-        }
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 40px;
+      font-size: 0.9rem;
+    }
 
-        nav ul li:hover {
-            background-color: #333;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(to right, #ff6b81, #ff4e5f);
-            color: white;
-            text-align: center;
-            padding: 150px 20px 50px;
-            margin-top: 60px; /* To avoid navbar overlap */
-        }
-
-        .hero h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.5em;
-            margin-bottom: 30px;
-        }
-
-        .hero .cta-btn {
-            background-color: #ff6b81;
-            padding: 15px 30px;
-            color: white;
-            font-size: 1.2em;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .hero .cta-btn:hover {
-            background-color: #ff4e5f;
-        }
-
-        .hero img {
-            width: 50%;
-            max-width: 600px;
-            margin-top: 30px;
-        }
-
-        /* Add some space below the hero section */
-        .spacer {
-            height: 100px;
-        }
-    </style>
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <div id="navbar-container"></div>
+  <div class="top-banner">
+    Discover the largest influencer marketing study in the US, Europe & LatAm – <a href="#" style="color:#000;">Read the report →</a>
+  </div>
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <h1>Empowering Connections: Your Ultimate Influencer Marketing Hub</h1>
-        <p>Maximize your influencer relationship management strategy with solid recruitment, key data, and seamless communication - all in one dynamic platform.</p>
-        <a href="#" class="cta-btn">Start Your Trial</a>
-        <img src="https://via.placeholder.com/600x400" alt="Influencer Marketing Dashboard">
+  <nav>
+    <div class="logo">Influencity</div>
+    <ul>
+      <li><a href="#platform">Platform</a></li>
+      <li><a href="#serve">Who We Serve</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Empowering Connections: Your Ultimate Influencer Marketing Hub</h1>
+      <p>Maximize your influencer relationship strategy with discovery, analytics, and campaign management in one place.</p>
+      <div class="hero-buttons">
+        <a href="#platform">Learn More</a>
+        <a href="#pricing">Start Your Trial</a>
+      </div>
     </div>
+    <div class="hero-image">
+      <img src="https://via.placeholder.com/500x320.png?text=Dashboard+Preview" alt="Dashboard Preview" />
+    </div>
+  </div>
 
-    <!-- Spacer for layout -->
-    <div class="spacer"></div>
+  <section id="platform">
+    <h2>Our Platform</h2>
+    <p>Discover influencers, analyze performance, and manage end-to-end campaigns in one unified space.</p>
+  </section>
 
-    <!-- JavaScript to Load Navbar -->
-    <script>
-        fetch('navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar-container').innerHTML = data;
-            })
-            .catch(err => console.log('Error loading the navbar:', err));
-    </script>
+  <section id="serve">
+    <h2>Who We Serve</h2>
+    <p>Brands, agencies, and marketing teams across the globe trust us to scale their influencer marketing efforts.</p>
+  </section>
+
+  <section id="features">
+    <h2>Features</h2>
+    <p>From AI-powered search to automated reporting, we offer everything to simplify your influencer marketing journey.</p>
+  </section>
+
+  <section id="resources">
+    <h2>Resources</h2>
+    <p>Stay ahead with our industry insights, guides, case studies, and webinars built to grow your campaigns smarter.</p>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <h2>Pricing</h2>
+    <p>Flexible plans for every team. Get started for free and upgrade when you're ready to scale.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Influencity Clone. Built for demo purposes.
+  </footer>
+
 </body>
 </html>
