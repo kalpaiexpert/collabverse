@@ -1,245 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Influsynch | Who We Serve</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who We Serve - Influencity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: #f9fafb;
-      color: #1f2937;
-    }
+        .hero {
+            background-color: #f7f7f7;
+            padding: 50px;
+            text-align: center;
+        }
 
-    header {
-      position: sticky;
-      top: 0;
-      background: white;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
+        .hero h1 {
+            font-size: 3em;
+            color: #333;
+        }
 
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-    }
+        .hero p {
+            font-size: 1.2em;
+            color: #555;
+        }
 
-    .nav-logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #3b82f6;
-    }
+        .section {
+            padding: 30px;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
 
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
+        .section h2 {
+            font-size: 2.5em;
+            color: #333;
+        }
 
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-link {
-      padding: 0.5rem;
-      font-weight: 500;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
-
-    .nav-link:hover {
-      background: #e0f2fe;
-    }
-
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: 2.5rem;
-      left: 0;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      min-width: 160px;
-    }
-
-    .nav-item:hover .dropdown {
-      display: block;
-    }
-
-    .dropdown a {
-      display: block;
-      padding: 0.75rem 1rem;
-      color: #1f2937;
-    }
-
-    .dropdown a:hover {
-      background: #f1f5f9;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 5rem 2rem 3rem;
-      background: linear-gradient(to right, #e0f2fe, #f0f9ff);
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #1e40af;
-      font-weight: 700;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: #374151;
-      max-width: 650px;
-      margin: auto;
-    }
-
-    .section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .profiles {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .profile-card {
-      background: white;
-      border-radius: 1rem;
-      padding: 2rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      text-align: center;
-      transform: translateY(20px);
-      opacity: 0;
-      transition: transform 0.6s ease, opacity 0.6s ease;
-    }
-
-    .profile-card.visible {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .profile-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .profile-card h3 {
-      color: #2563eb;
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
-    }
-
-    .profile-card p {
-      color: #4b5563;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    footer {
-      background: #1f2937;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-    }
-  </style>
+        .section p {
+            font-size: 1.1em;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <div class="navbar">
-      <div class="nav-logo">Influsynch</div>
-      <nav class="nav-links">
-        <div class="nav-item"><a class="nav-link" href="#">Home</a></div>
-        <div class="nav-item">
-          <a class="nav-link" href="#">Platform</a>
-          <div class="dropdown">
-            <a href="#">Overview</a>
-            <a href="#">AI Tools</a>
-            <a href="#">Campaigns</a>
-          </div>
-        </div>
-        <div class="nav-item">
-          <a class="nav-link" href="#">Who We Serve</a>
-          <div class="dropdown">
-            <a href="#">Brands</a>
-            <a href="#">Agencies</a>
-            <a href="#">Influencers</a>
-          </div>
-        </div>
-        <div class="nav-item"><a class="nav-link" href="#">Features</a></div>
-        <div class="nav-item">
-          <a class="nav-link" href="#">Resources</a>
-          <div class="dropdown">
-            <a href="#">Blog</a>
-            <a href="#">Help Center</a>
-          </div>
-        </div>
-        <div class="nav-item"><a class="nav-link" href="#">About</a></div>
-        <div class="nav-item"><a class="nav-link" href="#">Contact</a></div>
-      </nav>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Who We Serve</h1>
+        <p>We provide solutions to businesses and brands of all sizes.</p>
     </div>
-  </header>
 
-  <section class="hero">
-    <h1>Who We Serve</h1>
-    <p>Our platform empowers brands, agencies, and influencers to grow, connect, and scale smarter.</p>
-  </section>
-
-  <section class="section">
-    <div class="profiles">
-      <div class="profile-card" id="brand">
-        <div class="profile-icon">🏢</div>
-        <h3>Brands</h3>
-        <p>Discover and collaborate with top influencers to launch authentic campaigns and boost ROI through real-time insights.</p>
-      </div>
-      <div class="profile-card" id="agency">
-        <div class="profile-icon">🧑‍💼</div>
-        <h3>Agencies</h3>
-        <p>Manage multiple client campaigns with ease. From influencer discovery to performance reporting, everything in one place.</p>
-      </div>
-      <div class="profile-card" id="influencer">
-        <div class="profile-icon">📸</div>
-        <h3>Influencers</h3>
-        <p>Get discovered by top brands, track your impact, and grow your collaborations through powerful tools and data.</p>
-      </div>
+    <!-- Target Audience Section -->
+    <div class="section">
+        <h2>For Brands</h2>
+        <p>Influencity helps brands leverage the power of influencer marketing.</p>
     </div>
-  </section>
 
-  <footer>
-    &copy; 2025 Influsynch. All rights reserved.
-  </footer>
+    <div class="section">
+        <h2>For Agencies</h2>
+        <p>Our platform supports agencies in managing campaigns at scale.</p>
+    </div>
 
-  <script>
-    // Simple scroll animation for profile cards
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+    <div class="section">
+        <h2>For Influencers</h2>
+        <p>Join a global network and grow your brand with us.</p>
+    </div>
 
-    document.querySelectorAll('.profile-card').forEach(card => {
-      observer.observe(card);
-    });
-  </script>
 </body>
 </html>
