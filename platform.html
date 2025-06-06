@@ -1,269 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Influsynch | Platform</title>
-  <!-- Google Font (Inter) -->
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-  </style>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f9fafb;
-      color: #111827;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Platform - Influencer Marketing Platform</title>
+<style>
+  /* Google Font Inter */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+  /* Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 
-    header {
-      position: sticky;
-      top: 0;
-      background: white;
-      z-index: 999;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
+  body {
+    margin: 0; 
+    font-family: 'Inter', sans-serif;
+    background: #f9fafb;
+    color: #1f2937;
+  }
 
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-    }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-    .nav-logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #3b82f6;
-    }
+  /* Navbar */
+  .navbar {
+    position: sticky;
+    top: 0;
+    background: white;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    height: 60px;
+  }
 
+  .logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #2563eb;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link, .dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover, .dropdown-toggle:hover {
+    color: #2563eb;
+  }
+
+  /* Dropdown */
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 160px;
+    border-radius: 0.375rem;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+    display: none;
+    flex-direction: column;
+    padding: 0.5rem 0;
+    z-index: 1000;
+  }
+
+  .dropdown a {
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    font-weight: 500;
+    color: #374151;
+    transition: background-color 0.3s ease;
+  }
+
+  .dropdown a:hover {
+    background-color: #e0e7ff;
+    color: #2563eb;
+  }
+
+  /* Show dropdown on hover desktop */
+  @media (min-width: 769px) {
+    .nav-item:hover > .dropdown {
+      display: flex !important;
+    }
+  }
+
+  /* Mobile Nav */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+  }
+
+  .nav-toggle span {
+    height: 3px;
+    background: #2563eb;
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  /* Mobile menu open */
+  .nav-links.mobile-open {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+
+  .nav-links.mobile-open .dropdown {
+    position: static;
+    box-shadow: none;
+    padding-left: 1rem;
+  }
+
+  /* Mobile dropdown open */
+  .nav-item.open > .dropdown {
+    display: flex !important;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
     .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-link {
-      padding: 0.5rem;
-      font-weight: 500;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
-
-    .nav-link:hover {
-      background: #e0f2fe;
-    }
-
-    .dropdown {
       display: none;
-      position: absolute;
-      top: 2.5rem;
-      left: 0;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      min-width: 160px;
+      width: 100%;
     }
+    .nav-toggle {
+      display: flex;
+    }
+    .nav-item {
+      width: 100%;
+    }
+    .nav-link, .dropdown-toggle {
+      padding: 1rem;
+      width: 100%;
+    }
+  }
 
-    .nav-item:hover .dropdown {
-      display: block;
-    }
+  /* Hero Section */
+  .hero {
+    max-width: 900px;
+    margin: 3rem auto 4rem;
+    padding: 0 1rem;
+    text-align: center;
+  }
 
-    .dropdown a {
-      display: block;
-      padding: 0.75rem 1rem;
-    }
+  .hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e40af;
+    margin-bottom: 1rem;
+  }
 
-    .dropdown a:hover {
-      background: #f1f5f9;
-    }
+  .hero p {
+    font-size: 1.125rem;
+    color: #4b5563;
+    margin-bottom: 2rem;
+  }
 
-    .hero {
-      background: linear-gradient(to right, #e0f2fe, #f0f9ff);
-      padding: 6rem 2rem 4rem;
-      text-align: center;
-    }
+  .btn-group {
+    display: inline-flex;
+    gap: 1rem;
+  }
 
-    .hero h1 {
-      font-size: 2.5rem;
-      color: #1e40af;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
+  .btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgb(37 99 235 / 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+  }
 
-    .hero p {
-      font-size: 1.1rem;
-      color: #374151;
-      max-width: 650px;
-      margin: auto;
-      margin-bottom: 2rem;
-    }
+  .btn:hover {
+    background: #1e40af;
+    box-shadow: 0 6px 14px rgb(30 64 175 / 0.4);
+  }
 
-    .btn {
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      border: none;
-      background: #3b82f6;
-      color: white;
-    }
+  /* Features Sections */
+  .features-container {
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 2rem;
+  }
 
-    .btn:hover {
-      background: #2563eb;
-    }
+  .feature-card {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-    .section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
+  .feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgb(37 99 235 / 0.2);
+  }
 
-    .section-title {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      color: #1f2937;
-    }
+  .feature-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    border-radius: 50%;
+    margin-bottom: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 36px;
+    user-select: none;
+  }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
+  .feature-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: #1e40af;
+  }
 
-    .feature-card {
-      background: white;
-      border-radius: 1rem;
-      padding: 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-6px);
-    }
-
-    .icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .feature-card h3 {
-      margin-bottom: 0.75rem;
-      color: #2563eb;
-    }
-
-    .feature-card p {
-      color: #4b5563;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    footer {
-      background: #1f2937;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-    }
-  </style>
+  .feature-desc {
+    font-size: 1rem;
+    color: #4b5563;
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    <div class="navbar">
-      <div class="nav-logo">Influsynch</div>
-      <nav class="nav-links">
-        <div class="nav-item">
-          <a class="nav-link" href="#">Home</a>
-        </div>
-        <div class="nav-item">
-          <a class="nav-link" href="#">Platform</a>
-          <div class="dropdown">
-            <a href="#">Overview</a>
-            <a href="#">AI Tools</a>
-            <a href="#">Campaigns</a>
-          </div>
-        </div>
-        <div class="nav-item">
-          <a class="nav-link" href="#">Who We Serve</a>
-          <div class="dropdown">
-            <a href="#">Brands</a>
-            <a href="#">Agencies</a>
-            <a href="#">Influencers</a>
-          </div>
-        </div>
-        <div class="nav-item"><a class="nav-link" href="#">Features</a></div>
-        <div class="nav-item">
-          <a class="nav-link" href="#">Resources</a>
-          <div class="dropdown">
-            <a href="#">Blog</a>
-            <a href="#">Help Center</a>
-          </div>
-        </div>
-        <div class="nav-item"><a class="nav-link" href="#">About</a></div>
-        <div class="nav-item"><a class="nav-link" href="#">Contact</a></div>
-      </nav>
-    </div>
-  </header>
+<!-- Navbar -->
+<nav class="navbar" role="navigation" aria-label="Main Navigation">
+  <div class="logo">Influsynch</div>
+  <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links" role="menubar">
+    <li class="nav-item" role="none">
+      <a href="index.html" class="nav-link" role="menuitem" tabindex="0">Home</a>
+    </li>
+    <li class="nav-item" role="none">
+      <a href="platform.html" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="menuitem" tabindex="0">Platform ▾</a>
+      <ul class="dropdown" role="menu" aria-label="Platform submenu">
+        <li><a href="platform.html" role="menuitem" tabindex="-1">Overview</a></li>
+        <li><a href="features.html" role="menuitem" tabindex="-1">Features</a></li>
+        <li><a href="reporting.html" role="menuitem" tabindex="-1">Reporting</a></li>
+      </ul>
+    </li>
+    <li class="nav-item" role="none">
+      <a href="whoweserve.html" class="nav-link" role="menuitem" tabindex="0">Who We Serve</a>
+    </li>
+    <li class="nav-item" role="none">
+      <a href="features.html" class="nav-link" role="menuitem" tabindex="0">Features</a>
+    </li>
+    <li class="nav-item" role="none">
+      <a href="resources.html" class="nav-link" role="menuitem" tabindex="0">Resources</a>
+    </li>
+    <li class="nav-item" role="none">
+      <a href="about.html" class="nav-link" role="menuitem" tabindex="0">About</a>
+    </li>
+    <li class="nav-item" role="none">
+      <a href="contact.html" class="nav-link" role="menuitem" tabindex="0">Contact</a>
+    </li>
+  </ul>
+</nav>
 
-  <section class="hero">
-    <h1>One Platform. Endless Possibilities.</h1>
-    <p>From AI-powered search to performance analytics, Influsynch offers everything you need to run powerful influencer campaigns at scale.</p>
-    <button class="btn">Start Exploring</button>
-  </section>
+<!-- Hero Section -->
+<section class="hero" aria-label="Platform Introduction">
+  <h1>Power Your Campaigns with Our All-in-One Platform</h1>
+  <p>Discover, analyze, and manage influencer marketing campaigns effortlessly with AI-powered tools designed to maximize your ROI.</p>
+  <div class="btn-group">
+    <button class="btn" onclick="alert('Get Started clicked')">Get Started</button>
+    <button class="btn" onclick="alert('Request Demo clicked')" style="background:#4f46e5;">Request Demo</button>
+  </div>
+</section>
 
-  <section class="section">
-    <h2 class="section-title">Platform Features</h2>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="icon">🧠</div>
-        <h3>AI-Powered Search</h3>
-        <p>Quickly find the right influencers using our intelligent recommendation engine with filters for niche, audience, and engagement.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">📊</div>
-        <h3>Analytics Dashboard</h3>
-        <p>Track performance metrics, engagement rates, audience demographics, and more with real-time data visualizations.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">🎯</div>
-        <h3>Campaign Manager</h3>
-        <p>Manage multiple influencer campaigns simultaneously with workflow automation, timelines, and approval tools.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">🧑‍💼</div>
-        <h3>Influencer Discovery</h3>
-        <p>Browse and connect with a wide pool of verified influencers across platforms like Instagram, YouTube, and Facebook.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">📑</div>
-        <h3>Reporting Tools</h3>
-        <p>Export comprehensive performance reports to share with your clients or stakeholders in a click.</p>
-      </div>
-    </div>
-  </section>
+<!-- Features Section -->
+<section class="features-container" aria-label="Platform Features">
+  <article class="feature-card" tabindex="0">
+    <div class="feature-icon" aria-hidden="true">🤖</div>
+    <h2 class="feature-title">AI-Powered Search</h2>
+    <p class="feature-desc">Quickly find the perfect influencers with smart filters and AI-based recommendations.</p>
+  </article>
+  <article class="feature-card" tabindex="0">
+    <div class="feature-icon" aria-hidden="true">📊</div>
+    <h2 class="feature-title">Analytics Dashboard</h2>
+    <p class="feature-desc">Monitor campaign performance with real-time data and intuitive visuals.</p>
+  </article>
+  <article class="feature-card" tabindex="0">
+    <div class="feature-icon" aria-hidden="true">📅</div>
+    <h2 class="feature-title">Campaign Manager</h2>
+    <p class="feature-desc">Organize, schedule, and track your influencer campaigns from a centralized dashboard.</p>
+  </article>
+  <article class="feature-card" tabindex="0">
+    <div class="feature-icon" aria-hidden="true">🔍</div>
+    <h2 class="feature-title">Influencer Discovery</h2>
+    <p class="feature-desc">Discover new influencers across platforms to expand your reach and engagement.</p>
+  </article>
+  <article class="feature-card" tabindex="0">
+    <div class="feature-icon" aria-hidden="true">📈</div>
+    <h2 class="feature-title">Reporting Tools</h2>
+    <p class="feature-desc">Generate detailed reports and insights to measure campaign success and ROI.</p>
+  </article>
+</section>
 
-  <footer>
-    &copy; 2025 Influsynch. All rights reserved.
-  </footer>
+<script>
+  // Mobile nav toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  navToggle.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+    navToggle.setAttribute('aria-expanded', !expanded);
+    navLinks.classList.toggle('mobile-open');
+  });
+
+  // Dropdown toggles on click for mobile only
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', e => {
+      if(window.innerWidth >= 769) return; // hover on desktop
+
+      e.preventDefault();
+      const parent = toggle.parentElement;
+
+      // Close other open dropdowns
+      dropdownToggles.forEach(otherToggle => {
+        if(otherToggle !== toggle) {
+          otherToggle.parentElement.classList.remove('open');
+          otherToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      const isOpen = parent.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen);
+    });
+  });
+
+  // Close dropdowns when clicking outside on mobile
+  document.addEventListener('click', e => {
+    if(!e.target.closest('.nav-item')) {
+      dropdownToggles.forEach(toggle => {
+        toggle.parentElement.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
