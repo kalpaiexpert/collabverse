@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Influencity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #111;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            position: relative;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+        }
+
+        nav ul li:hover {
+            background-color: #333;
+        }
+
+        /* Mega Dropdown Menu */
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: #111;
+            width: 100%;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        nav ul li:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .dropdown ul li {
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #f7f7f7;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            color: #333;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li>Who We Serve
+                <div class="dropdown">
+                    <ul>
+                        <li><a href="who-we-serve.html">For Brands</a></li>
+                        <li><a href="who-we-serve.html">For Agencies</a></li>
+                        <li><a href="who-we-serve.html">For Influencers</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="platform.html">Platform</a></li>
+            <li><a href="company.html">Company</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to Influencity</h1>
+        <p>Your platform for influencer marketing made simple.</p>
+    </div>
+
+</body>
+</html>
