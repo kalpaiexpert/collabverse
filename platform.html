@@ -1,143 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Platform - InfluenceConnect</title>
-    <style>
-        /* Basic Reset and Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Influsynch | Platform</title>
+  <!-- Google Font (Inter) -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+  </style>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: #f8f9fa;
-        }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-        /* Header/Navbar */
-        header {
-            background-color: #4a6bff;
-            color: white;
-            padding: 1rem 5%;
-        }
+    header {
+      position: sticky;
+      top: 0;
+      background: white;
+      z-index: 999;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #3b82f6;
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
+    .nav-item {
+      position: relative;
+    }
 
-        .nav-links a:hover {
-            color: #ffcc00;
-        }
+    .nav-link {
+      padding: 0.5rem;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
 
-        /* Platform Section */
-        .platform-section {
-            padding: 5rem 5%;
-            text-align: center;
-            background-color: #eef2ff;
-        }
+    .nav-link:hover {
+      background: #e0f2fe;
+    }
 
-        .platform-section h2 {
-            font-size: 2.5rem;
-            color: #1a237e;
-            margin-bottom: 2rem;
-        }
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 2.5rem;
+      left: 0;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      min-width: 160px;
+    }
 
-        .platform-section p {
-            font-size: 1.2rem;
-            color: #555;
-            margin-bottom: 3rem;
-        }
+    .nav-item:hover .dropdown {
+      display: block;
+    }
 
-        .feature-card {
-            display: inline-block;
-            width: 30%;
-            padding: 2rem;
-            background-color: white;
-            margin: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+    .dropdown a {
+      display: block;
+      padding: 0.75rem 1rem;
+    }
 
-        .feature-card h3 {
-            font-size: 1.6rem;
-            color: #1a237e;
-            margin-bottom: 1rem;
-        }
+    .dropdown a:hover {
+      background: #f1f5f9;
+    }
 
-        .feature-card p {
-            font-size: 1.1rem;
-            color: #555;
-        }
+    .hero {
+      background: linear-gradient(to right, #e0f2fe, #f0f9ff);
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+    }
 
-    </style>
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #1e40af;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #374151;
+      max-width: 650px;
+      margin: auto;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      border: none;
+      background: #3b82f6;
+      color: white;
+    }
+
+    .btn:hover {
+      background: #2563eb;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #1f2937;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 0.75rem;
+      color: #2563eb;
+    }
+
+    .feature-card p {
+      color: #4b5563;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      background: #1f2937;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="#">InfluencerConnect</a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="platform.html">Platform</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="signup.html">Sign Up</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="platform-section">
-        <h2>Our Platform Features</h2>
-        <p>Discover the tools and features that help businesses connect with influencers.</p>
-
-        <div class="feature-card">
-            <h3>Advanced Search</h3>
-            <p>Find the right influencers based on niche, location, and engagement.</p>
+  <header>
+    <div class="navbar">
+      <div class="nav-logo">Influsynch</div>
+      <nav class="nav-links">
+        <div class="nav-item">
+          <a class="nav-link" href="#">Home</a>
         </div>
-
-        <div class="feature-card">
-            <h3>Campaign Management</h3>
-            <p>Easily manage and track your influencer marketing campaigns.</p>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Platform</a>
+          <div class="dropdown">
+            <a href="#">Overview</a>
+            <a href="#">AI Tools</a>
+            <a href="#">Campaigns</a>
+          </div>
         </div>
-
-        <div class="feature-card">
-            <h3>Analytics</h3>
-            <p>Track the performance of your campaigns with detailed analytics and reporting.</p>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Who We Serve</a>
+          <div class="dropdown">
+            <a href="#">Brands</a>
+            <a href="#">Agencies</a>
+            <a href="#">Influencers</a>
+          </div>
         </div>
+        <div class="nav-item"><a class="nav-link" href="#">Features</a></div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Resources</a>
+          <div class="dropdown">
+            <a href="#">Blog</a>
+            <a href="#">Help Center</a>
+          </div>
+        </div>
+        <div class="nav-item"><a class="nav-link" href="#">About</a></div>
+        <div class="nav-item"><a class="nav-link" href="#">Contact</a></div>
+      </nav>
+    </div>
+  </header>
 
-    </section>
+  <section class="hero">
+    <h1>One Platform. Endless Possibilities.</h1>
+    <p>From AI-powered search to performance analytics, Influsynch offers everything you need to run powerful influencer campaigns at scale.</p>
+    <button class="btn">Start Exploring</button>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Platform Features</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon">🧠</div>
+        <h3>AI-Powered Search</h3>
+        <p>Quickly find the right influencers using our intelligent recommendation engine with filters for niche, audience, and engagement.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📊</div>
+        <h3>Analytics Dashboard</h3>
+        <p>Track performance metrics, engagement rates, audience demographics, and more with real-time data visualizations.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🎯</div>
+        <h3>Campaign Manager</h3>
+        <p>Manage multiple influencer campaigns simultaneously with workflow automation, timelines, and approval tools.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🧑‍💼</div>
+        <h3>Influencer Discovery</h3>
+        <p>Browse and connect with a wide pool of verified influencers across platforms like Instagram, YouTube, and Facebook.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📑</div>
+        <h3>Reporting Tools</h3>
+        <p>Export comprehensive performance reports to share with your clients or stakeholders in a click.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Influsynch. All rights reserved.
+  </footer>
 
 </body>
-
 </html>
