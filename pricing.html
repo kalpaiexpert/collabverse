@@ -3,87 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing - Influencity</title>
+    <title>Pricing - Influsynch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
+        /* Custom styles to complement Tailwind */
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-        }
-
-        .hero {
-            background-color: #f7f7f7;
-            padding: 50px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3em;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
             color: #333;
         }
 
-        .hero p {
-            font-size: 1.2em;
-            color: #555;
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .plans {
-            display: flex;
-            justify-content: center;
-            padding: 30px;
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
-        .plans div {
-            width: 300px;
-            margin: 10px;
-            padding: 20px;
-            background-color: #eee;
-            text-align: center;
+        .pricing-card {
+            transition: transform 0.3s ease;
         }
 
-        .plans h3 {
-            font-size: 2.5em;
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .most-popular {
+            border: 2px solid #FFD700;
+            position: relative;
+        }
+
+        .most-popular::before {
+            content: '⭐ Most Popular';
+            position: absolute;
+            top: -1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FFD700;
             color: #333;
+            padding: 0.25rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
-        .plans p {
-            color: #555;
-        }
-
-        .plans .price {
-            font-size: 2em;
-            font-weight: bold;
-            color: #333;
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar bg-white shadow-md py-4 px-5 md:px-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="logo">
+                <a href="index.html" class="text-2xl font-bold text-blue-600">Influsynch</a>
+            </div>
+            <div class="nav-links flex items-center space-x-6">
+                <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                <div class="dropdown relative">
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Our Platform</a>
+                    <div class="dropdown-content hidden absolute bg-white shadow-lg rounded-md mt-2 w-48">
+                        <a href="influencer-discovery.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600">Influencer Discovery</a>
+                        <a href="relationship-management.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600">Relationship Management</a>
+                        <a href="campaign-manager.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600">Campaign Manager</a>
+                        <a href="campaign-reports.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600">Campaign Reports</a>
+                    </div>
+                </div>
+                <a href="pricing.html" class="text-gray-700 hover:text-blue-600 font-medium">Pricing</a>
+                <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+                <a href="contact.html" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                <a href="#" class="btn border border-blue-600 text-blue-600 px-4 py-2 rounded-md hover:bg-gray-100 font-medium">I’m an Influencer</a>
+                <a href="#" class="btn bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 font-medium">I’m a Business</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <div class="hero">
-        <h1>Pricing</h1>
-        <p>Choose the best plan for your business.</p>
-    </div>
+    <section class="hero bg-gradient-to-r from-blue-600 to-blue-800 text-white text-center py-20 px-5">
+        <div class="container mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Choose the Perfect Plan for Your Brand</h1>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Explore our flexible pricing plans designed to help you connect with India’s top influencers.</p>
+            <a href="#" class="btn bg-white text-blue-600 px-6 py-3 rounded-md font-medium hover:bg-gray-100">Get Started Now</a>
+        </div>
+    </section>
 
-    <!-- Pricing Plans -->
-    <div class="plans">
-        <div>
-            <h3>Basic</h3>
-            <p>Perfect for small businesses and startups.</p>
-            <p class="price">$19/month</p>
-        </div>
-        <div>
-            <h3>Pro</h3>
-            <p>For growing businesses with advanced needs.</p>
-            <p class="price">$49/month</p>
-        </div>
-        <div>
-            <h3>Enterprise</h3>
-            <p>For large enterprises looking to scale influencer marketing.</p>
-            <p class="price">$99/month</p>
-        </div>
-    </div>
+    <!-- Pricing Section -->
+    <section class="pricing py-16 px-5 bg-gray-50">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Pricing Plans</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Kickstart Free Plan -->
+                <div class="pricing-card bg-white shadow-lg rounded-lg p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-2">Kickstart Free</h3>
+                    <p class="text-3xl font-bold mb-2">₹0</p>
+                    <p class="text-sm text-gray-500 mb-4">Valid for 24 hours</p>
+                    <ul class="text-left mb-6 space-y-2">
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Access to influencer database</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> 1 campaign creation</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Up to 5 direct messages</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Email support</li>
+                    </ul>
+                    <a href="#" class="btn bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">Start Free Trial</a>
+                </div>
 
+                <!-- Basic Plan -->
+                <div class="pricing-card bg-white shadow-lg rounded-lg p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-2">Basic</h3>
+                    <p class="text-3xl font-bold mb-2">₹499</p>
+                    <p class="text-sm text-gray-500 mb-4">Per month</p>
+                    <ul class="text-left mb-6 space-y-2">
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Database access</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Up to 3 campaigns</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> 50 messages/month</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Priority email support</li>
+                    </ul>
+                    <a href="#" class="btn bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">Choose Basic</a>
+                </div>
+
+                <!-- Silver Plan -->
+                <div class="pricing-card bg-white shadow-lg rounded-lg p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-2">Silver</h3>
+                    <p class="text-3xl font-bold mb-2">₹1,999</p>
+                    <p class="text-sm text-gray-500 mb-4">Per month</p>
+                    <ul class="text-left mb-6 space-y-2">
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Everything in Basic</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> 10 campaign creations</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Unlimited messages</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Analytics dashboard</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Chat support</li>
+                    </ul>
+                    <a href="#" class="btn bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">Choose Silver</a>
+                </div>
+
+                <!-- Diamond Plan -->
+                <div class="pricing-card most-popular bg-white shadow-lg rounded-lg p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-2">Diamond</h3>
+                    <p class="text-3xl font-bold mb-2">₹3,999</p>
+                    <p class="text-sm text-gray-500 mb-4">Per month</p>
+                    <ul class="text-left mb-6 space-y-2">
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Everything in Silver</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> AI-based influencer suggestions</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> A/B testing for campaigns</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Custom campaign templates</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Phone & chat support</li>
+                    </ul>
+                    <a href="#" class="btn bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">Choose Diamond</a>
+                </div>
+
+                <!-- Platinum Plan -->
+                <div class="pricing-card bg-white shadow-lg rounded-lg p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-2">Platinum</h3>
+                    <p class="text-3xl font-bold mb-2">₹7,999</p>
+                    <p class="text-sm text-gray-500 mb-4">Per month</p>
+                    <ul class="text-left mb-6 space-y-2">
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Everything in Diamond</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Dedicated account manager</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> API access</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Monthly growth consultation</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> VIP influencer matchmaking</li>
+                    </ul>
+                    <a href="#" class="btn bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">Choose Platinum</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-gray-800 text-white py-12 px-5">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Influsynch</h3>
+                <p class="text-gray-400">India’s premier platform for influencer marketing.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Platform</h3>
+                <a href="influencer-discovery.html" class="block text-gray-400 hover:text-blue-400 mb-2">Influencer Discovery</a>
+                <a href="relationship-management.html" class="block text-gray-400 hover:text-blue-400 mb-2">Relationship Management</a>
+                <a href="campaign-manager.html" class="block text-gray-400 hover:text-blue-400 mb-2">Campaign Manager</a>
+                <a href="campaign-reports.html" class="block text-gray-400 hover:text-blue-400 mb-2">Campaign Reports</a>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <a href="about.html" class="block text-gray-400 hover:text-blue-400 mb-2">About Us</a>
+                <a href="contact.html" class="block text-gray-400 hover:text-blue-400 mb-2">Contact</a>
+                <a href="pricing.html" class="block text-gray-400 hover:text-blue-400 mb-2">Pricing</a>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                <div class="social-links flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-blue-400">Twitter</a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400">Instagram</a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
