@@ -4,445 +4,279 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Influencer Signup - Influsynch</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        body {
             font-family: 'Inter', sans-serif;
         }
-
-        body {
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            position: sticky;
-            top: 0;
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar .logo a {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: #007bff;
-        }
-
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: #fff;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            z-index: 1;
-            border-radius: 4px;
-        }
-
-        .dropdown-content a {
-            display: block;
-            padding: 0.75rem 1rem;
-            color: #333;
-        }
-
-        .dropdown-content a:hover {
-            background: #f1f1f1;
-            color: #007bff;
-        }
-
         .dropdown:hover .dropdown-content {
             display: block;
         }
-
-        .btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
+        .dropdown-content {
+            transition: all 0.2s ease-in-out;
         }
-
-        .btn-primary {
-            background: #007bff;
-            color: #fff;
-            border: none;
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-
-        .btn-primary:hover {
-            background: #0056b3;
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        .btn-secondary {
-            background: #fff;
-            color: #007bff;
-            border: 1px solid #007bff;
+        .hover-scale:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
         }
-
-        .btn-secondary:hover {
-            background: #f1f1f1;
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(0,87,255,0.7), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3');
+            background-size: cover;
+            background-position: center;
         }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-            color: #fff;
-            text-align: center;
-            padding: 5rem 5%;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Signup Section */
-        .signup {
-            padding: 3rem 5%;
-            text-align: center;
-        }
-
-        .signup h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .signup p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #666;
-        }
-
-        .signup-form {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
+        img {
             display: block;
-            font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
+            max-width: 100%;
+            height: auto;
         }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            font-size: 1rem;
+        .error {
+            border-color: #ef4444 !important;
         }
-
         .error-message {
-            color: #dc3545;
-            font-size: 0.9rem;
-            margin-top: 0.25rem;
             display: none;
+            color: #ef4444;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
         }
-
-        .form-group.error input,
-        .form-group.error select {
-            border-color: #dc3545;
-        }
-
-        .form-group.error .error-message {
+        .error .error-message {
             display: block;
-        }
-
-        /* Footer */
-        .footer {
-            background: #333;
-            color: #fff;
-            padding: 3rem 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer a {
-            color: #ccc;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer a:hover {
-            color: #007bff;
-        }
-
-        .social-links a {
-            font-size: 1.2rem;
-            margin-right: 1rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .signup h2 {
-                font-size: 1.8rem;
-            }
-
-            .signup p {
-                font-size: 1rem;
-            }
-
-            .navbar .btn {
-                font-size: 0.9rem;
-                padding: 0.4rem 1rem;
-            }
         }
     </style>
 </head>
-<body>
+<body class="bg-white text-gray-900">
     <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="logo"><a href="index.html">Influsynch</a></div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <div class="dropdown">
-                <a href="#">Our Platform</a>
-                <div class="dropdown-content">
-                    <a href="influencer-discovery.html">Influencer Discovery</a>
-                    <a href="relationship-management.html">Relationship Management</a>
-                    <a href="campaign-manager.html">Campaign Manager</a>
-                    <a href="campaign-reports.html">Campaign Reports</a>
-                </div>
+    <nav class="bg-white shadow-md sticky top-0 z-50 py-4 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="logo">
+                <a href="index.html" class="text-2xl font-bold text-blue-600">Influsynch</a>
             </div>
-            <a href="pricing.html">Pricing</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="influencer-signup.html" class="btn btn-secondary">I’m an Influencer</a>
-            <a href="business-signup.html" class="btn btn-primary">I’m a Business</a>
+            <div class="nav-links flex items-center space-x-6">
+                <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                <div class="dropdown relative">
+                    <a href="our-platform.html" class="text-gray-700 hover:text-blue-600 font-medium">Our Platform</a>
+                    <div class="dropdown-content hidden absolute bg-white shadow-lg rounded-md mt-2 w-48">
+                        <a href="influencer-discovery.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600">Influencer Discovery</a>
+                        <a href="relationship-management.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600">Relationship Management</a>
+                        <a href="campaign-manager.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600">Campaign Manager</a>
+                        <a href="campaign-reports.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600">Campaign Reports</a>
+                    </div>
+                </div>
+                <a href="pricing.html" class="text-gray-700 hover:text-blue-600 font-medium">Pricing</a>
+                <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+                <a href="contact.html" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                <a href="influencer-signup.html" class="border border-blue-600 text-blue-600 px-4 py-2 rounded-md hover:bg-gray-100 font-medium">I’m an Influencer</a>
+                <a href="business-signup.html" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 font-medium">I’m a Business</a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <h1>Join Influsynch as an Influencer</h1>
-        <p>Sign up to connect with top brands in India and grow your influence with our powerful platform.</p>
-        <a href="#signup-form" class="btn btn-primary">Sign Up Now</a>
-        <a href="pricing.html" class="btn btn-secondary">View Pricing</a>
+    <section class="hero-bg py-24 px-6 text-center">
+        <div class="max-w-4xl mx-auto fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Join Influsynch as an Influencer</h1>
+            <p class="text-lg text-gray-600 mb-8">Sign up to connect with top brands in India and grow your influence with our powerful platform.</p>
+            <a href="#signup-form" class="bg-blue-600 text-white px-8 py-4 rounded-md font-medium hover:bg-blue-700 transition duration-300 hover-scale">Sign Up Now</a>
+        </div>
     </section>
 
-    <!-- Signup Section -->
-    <section class="signup">
-        <h2>Influencer Signup</h2>
-        <p>Create your account to start collaborating with brands across India.</p>
-        <form id="influencer-signup-form" class="signup-form" novalidate>
-            <div class="form-group">
-                <label for="name">Name *</label>
-                <input type="text" id="name" name="name" required>
-                <span class="error-message">Please enter your name.</span>
-            </div>
-            <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" id="email" name="email" required>
-                <span class="error-message">Please enter a valid email address.</span>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone">
-                <span class="error-message">Please enter a valid 10-digit phone number.</span>
-            </div>
-            <div class="form-group">
-                <label for="social-handle">Social Media Handle (e.g., Instagram) *</label>
-                <input type="text" id="social-handle" name="social-handle" required>
-                <span class="error-message">Please enter your social media handle.</span>
-            </div>
-            <div class="form-group">
-                <label for="category">Category *</label>
-                <select id="category" name="category" required>
-                    <option value="" disabled selected>Select a category</option>
-                    <option value="fashion">Fashion & Lifestyle</option>
-                    <option value="tech">Tech & Gadgets</option>
-                    <option value="travel">Travel & Adventure</option>
-                    <option value="fitness">Fitness & Health</option>
-                    <option value="food">Food & Cuisine</option>
-                </select>
-                <span class="error-message">Please select a category.</span>
-            </div>
-            <div class="form-group">
-                <label for="followers">Followers Count *</label>
-                <input type="number" id="followers" name="followers" required min="0">
-                <span class="error-message">Please enter a valid number of followers.</span>
-            </div>
-            <div class="form-group">
-                <label for="password">Password (min 8 characters) *</label>
-                <input type="password" id="password" name="password" required>
-                <span class="error-message">Password must be at least 8 characters long.</span>
-            </div>
-            <div class="form-group">
-                <label for="confirm-password">Confirm Password *</label>
-                <input type="password" id="confirm-password" name="confirm-password" required>
-                <span class="error-message">Passwords do not match.</span>
-            </div>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
-        </form>
+    <!-- Signup Form Section -->
+    <section class="py-16 px-6 bg-gray-100">
+        <div class="max-w-lg mx-auto fade-in">
+            <h2 class="text-3xl font-semibold text-gray-900 text-center mb-6">Influencer Signup</h2>
+            <form id="signup-form" class="bg-white p-8 rounded-lg shadow-md" novalidate>
+                <div class="form-group mb-4">
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name *</label>
+                    <input type="text" id="name" name="name" class="w-full p-2 border border-gray-300 rounded-md focus:border-blue-600 focus:ring-blue-600" required>
+                    <span class="error-message">Please enter your name.</span>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                    <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded-md focus:border-blue-600 focus:ring-blue-600" required>
+                    <span class="error-message">Please enter a valid email address.</span>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="w-full p-2 border border-gray-300 rounded-md focus:border-blue-600 focus:ring-blue-600">
+                    <span class="error-message">Please enter a valid 10-digit phone number.</span>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="social-handle" class="block text-sm font-medium text-gray-700 mb-1">Social Media Handle (e.g., Instagram) *</label>
+                    <input type="text" id="social-handle" name="social-handle" class="w-full p-2 border border-gray-300 rounded-md focus:border-blue-600 focus:ring-blue-600" required>
+                    <span class="error-message">Please enter your social media handle.</span>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Category *</label>
+                    <select id="category" name="category" class="w-full p-2 border border-gray-300 rounded-md focus:border-blue-600 focus:ring-blue-600" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="fashion">Fashion & Lifestyle</option>
+                        <option value="tech">Tech & Gadgets</option>
+                        <option value="travel">Travel & Adventure</option>
+                        <option value="fitness">Fitness & Health</option>
+                        <option value="food">Food & Cuisine</option>
+                    </select>
+                    <span class="error-message">Please select a category.</span>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="followers" class="block text-sm font-medium text-gray-700 mb-1">Followers Count *</label>
+                    <input type="number" id="followers" name="followers" class="w-full p-2 border border-gray-300 rounded-md focus:border-blue-600 focus:ring-blue-600" min="0" required>
+                    <span class="error-message">Please enter a valid number of followers.</span>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password (min 8 characters) *</label>
+                    <input type="password" id="password" name="password" class="w-full p-2 border border-gray-300 rounded-md focus:border-blue-600 focus:ring-blue-600" required>
+                    <span class="error-message">Password must be at least 8 characters long.</span>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="confirm-password" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password *</label>
+                    <input type="password" id="confirm-password" name="confirm-password" class="w-full p-2 border border-gray-300 rounded-md focus:border-blue-600 focus:ring-blue-600" required>
+                    <span class="error-message">Passwords do not match.</span>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white px-4 py-3 rounded-md font-medium hover:bg-blue-700 transition duration-300 hover-scale">Sign Up</button>
+            </form>
+        </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div>
-            <h3>Influsynch</h3>
-            <p>India’s premier platform for influencer marketing.</p>
+    <footer class="bg-gray-900 text-white py-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Influsynch</h3>
+                <p class="text-gray-400">India’s premier platform for influencer marketing.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Platform</h3>
+                <a href="influencer-discovery.html" class="block text-gray-400 hover:text-blue-400 mb-2">Influencer Discovery</a>
+                <a href="relationship-management.html" class="block text-gray-400 hover:text-blue-400 mb-2">Relationship Management</a>
+                <a href="campaign-manager.html" class="block text-gray-400 hover:text-blue-400 mb-2">Campaign Manager</a>
+                <a href="campaign-reports.html" class="block text-gray-400 hover:text-blue-400 mb-2">Campaign Reports</a>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <a href="about.html" class="block text-gray-400 hover:text-blue-400 mb-2">About Us</a>
+                <a href="contact.html" class="block text-gray-400 hover:text-blue-400 mb-2">Contact</a>
+                <a href="pricing.html" class="block text-gray-400 hover:text-blue-400 mb-2">Pricing</a>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Stay Connected</h3>
+                <form class="mb-4">
+                    <input type="email" placeholder="Enter your email" class="w-full p-2 rounded-md text-gray-900">
+                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md mt-2 hover:bg-blue-700">Subscribe</button>
+                </form>
+                <div class="social-links flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-blue-400">Twitter</a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400">Instagram</a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400">LinkedIn</a>
+                </div>
+            </div>
         </div>
-        <div>
-            <h3>Platform</h3>
-            <a href="influencer-discovery.html">Influencer Discovery</a>
-            <a href="relationship-management.html">Relationship Management</a>
-            <a href="campaign-manager.html">Campaign Manager</a>
-            <a href="campaign-reports.html">Campaign Reports</a>
-        </div>
-        <div>
-            <h3>Company</h3>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
-            <a href="pricing.html">Pricing</a>
-        </div>
-        <div>
-            <h3>Follow Us</h3>
-            <div class="social-links">
-                <a href="#">Twitter</a>
-                <a href="#">Instagram</a>
-                <a href="#">LinkedIn</a>
+        <div class="max-w-7xl mx-auto mt-8 border-t border-gray-700 pt-4 text-center text-gray-400">
+            <p>© 2025 Influsynch. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-2">
+                <a href="#" class="hover:text-blue-400">Terms</a>
+                <a href="#" class="hover:text-blue-400">Privacy</a>
+                <a href="#" class="hover:text-blue-400">Cookies</a>
             </div>
         </div>
     </footer>
 
     <!-- Form Validation Script -->
     <script>
-        document.getElementById('influencer-signup-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            let isValid = true;
-            const form = this;
-            const name = form.querySelector('#name');
-            const email = form.querySelector('#email');
-            const phone = form.querySelector('#phone');
-            const socialHandle = form.querySelector('#social-handle');
-            const category = form.querySelector('#category');
-            const followers = form.querySelector('#followers');
-            const password = form.querySelector('#password');
-            const confirmPassword = form.querySelector('#confirm-password');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fade-in animations
+            const elements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            elements.forEach(el => observer.observe(el));
 
-            // Reset error states
-            form.querySelectorAll('.form-group').forEach(group => {
-                group.classList.remove('error');
+            // Form validation
+            const form = document.getElementById('influencer-signup-form');
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                let isValid = true;
+
+                const name = form.querySelector('#name');
+                const email = form.querySelector('#email');
+                const phone = form.querySelector('#phone');
+                const socialHandle = form.querySelector('#social-handle');
+                const category = form.querySelector('#category');
+                const followers = form.querySelector('#followers');
+                const password = form.querySelector('#password');
+                const confirmPassword = form.querySelector('#confirm-password');
+
+                // Reset error states
+                form.querySelectorAll('.form-group').forEach(group => {
+                    group.classList.remove('error');
+                });
+
+                // Validate Name
+                if (!name.value.trim()) {
+                    name.parentElement.classList.add('error');
+                    isValid = false;
+                }
+
+                // Validate Email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email.value.trim() || !emailRegex.test(email.value)) {
+                    email.parentElement.classList.add('error');
+                    isValid = false;
+                }
+
+                // Validate Phone (optional, but if provided, must be 10 digits)
+                if (phone.value.trim() && !/^\d{10}$/.test(phone.value.replace(/\D/g, ''))) {
+                    phone.parentElement.classList.add('error');
+                    isValid = false;
+                }
+
+                // Validate Social Media Handle
+                if (!socialHandle.value.trim()) {
+                    socialHandle.parentElement.classList.add('error');
+                    isValid = false;
+                }
+
+                // Validate Category
+                if (!category.value) {
+                    category.parentElement.classList.add('error');
+                    isValid = false;
+                }
+
+                // Validate Followers
+                if (!followers.value || followers.value < 0) {
+                    followers.parentElement.classList.add('error');
+                    isValid = false;
+                }
+
+                // Validate Password
+                if (!password.value || password.value.length < 8) {
+                    password.parentElement.classList.add('error');
+                    isValid = false;
+                }
+
+                // Validate Confirm Password
+                if (!confirmPassword.value || confirmPassword.value !== password.value) {
+                    confirmPassword.parentElement.classList.add('error');
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    alert('Influencer signup submitted successfully!');
+                    form.reset();
+                }
             });
-
-            // Validate Name
-            if (!name.value.trim()) {
-                name.parentElement.classList.add('error');
-                isValid = false;
-            }
-
-            // Validate Email
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!email.value.trim() || !emailRegex.test(email.value)) {
-                email.parentElement.classList.add('error');
-                isValid = false;
-            }
-
-            // Validate Phone (optional, but if provided, must be 10 digits)
-            if (phone.value.trim() && !/^\d{10}$/.test(phone.value.replace(/\D/g, ''))) {
-                phone.parentElement.classList.add('error');
-                isValid = false;
-            }
-
-            // Validate Social Media Handle
-            if (!socialHandle.value.trim()) {
-                socialHandle.parentElement.classList.add('error');
-                isValid = false;
-            }
-
-            // Validate Category
-            if (!category.value) {
-                category.parentElement.classList.add('error');
-                isValid = false;
-            }
-
-            // Validate Followers
-            if (!followers.value || followers.value < 0) {
-                followers.parentElement.classList.add('error');
-                isValid = false;
-            }
-
-            // Validate Password
-            if (!password.value || password.value.length < 8) {
-                password.parentElement.classList.add('error');
-                isValid = false;
-            }
-
-            // Validate Confirm Password
-            if (!confirmPassword.value || confirmPassword.value !== password.value) {
-                confirmPassword.parentElement.classList.add('error');
-                isValid = false;
-            }
-
-            if (isValid) {
-                alert('Influencer signup submitted successfully!'); // Placeholder for form submission
-                form.reset();
-            }
         });
     </script>
 </body>
