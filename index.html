@@ -1,207 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Influencity - Clone</title>
-  <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff;
-      color: #333;
-    }
-    .top-banner {
-      background: #ffc107;
-      padding: 10px;
-      text-align: center;
-      font-size: 0.9rem;
-      font-weight: bold;
-    }
-    nav {
-      background: #0a0a0a;
-      padding: 15px 40px;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav .logo {
-      color: #fff;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-    }
-    nav ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.3s;
-    }
-    nav ul li a:hover {
-      color: #ffc107;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influsynch - India’s Premier Influencer Marketing Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
 
-    .hero {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 80px 40px 60px;
-      background: linear-gradient(to right, #f72585, #b5179e);
-      color: white;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .hero-text {
-      flex: 1;
-      min-width: 300px;
-    }
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 20px;
-      max-width: 600px;
-    }
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
-      max-width: 500px;
-    }
-    .hero-buttons a {
-      padding: 12px 25px;
-      background: white;
-      color: #b5179e;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 6px;
-      margin-right: 15px;
-      transition: background 0.3s;
-    }
-    .hero-buttons a:hover {
-      background: #f0f0f0;
-    }
-    .hero-image {
-      flex: 1;
-      min-width: 300px;
-      text-align: center;
-    }
-    .hero-image img {
-      max-width: 100%;
-      border-radius: 12px;
-    }
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
 
-    section {
-      padding: 80px 40px;
-      text-align: center;
-    }
-    section h2 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-    }
-    section p {
-      font-size: 1rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
+        /* Navigation Bar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .pricing {
-      background: #f8f8f8;
-    }
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #007bff;
+        }
 
-    footer {
-      background: #111;
-      color: #aaa;
-      text-align: center;
-      padding: 40px;
-      font-size: 0.9rem;
-    }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-      }
-      nav {
-        flex-direction: column;
-        gap: 10px;
-      }
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-  </style>
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #fff;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 4px;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #333;
+        }
+
+        .dropdown-content a:hover {
+            background: #f1f1f1;
+            color: #007bff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: #007bff;
+            border: 1px solid #007bff;
+        }
+
+        .btn-secondary:hover {
+            background: #f1f1f1;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: #fff;
+            text-align: center;
+            padding: 5rem 5%;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 1.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: #f8f9fa;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card h4 {
+            font-size: 1rem;
+            color: #007bff;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: #fff;
+            padding: 3rem 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a:hover {
+            color: #007bff;
+        }
+
+        .social-links a {
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .navbar .btn {
+                font-size: 0.9rem;
+                padding: 0.4rem 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Influsynch</div>
+        <div class="nav-links">
+            <div class="dropdown">
+                <a href="#">Our Platform</a>
+                <div class="dropdown-content">
+                    <a href="influencer-discovery.html">Influencer Discovery</a>
+                    <a href="relationship-management.html">Relationship Management</a>
+                    <a href="campaign-manager.html">Campaign Manager</a>
+                    <a href="campaign-reports.html">Campaign Reports</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="#" class="btn btn-secondary">I’m an Influencer</a>
+            <a href="#" class="btn btn-primary">I’m a Business</a>
+        </div>
+    </nav>
 
-  <div class="top-banner">
-    Discover the largest influencer marketing study in the US, Europe & LatAm – <a href="#" style="color:#000;">Read the report →</a>
-  </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Connect Your Brand with India’s Top Influencers</h1>
+        <p>Influsynch is India’s leading influencer marketing platform, empowering businesses to discover, manage, and measure impactful influencer campaigns.</p>
+        <a href="#" class="btn btn-primary">Get Started</a>
+        <a href="pricing.html" class="btn btn-secondary">View Pricing</a>
+    </section>
 
-  <nav>
-    <div class="logo">Influencity</div>
-    <ul>
-      <li><a href="#platform">Platform</a></li>
-      <li><a href="#serve">Who We Serve</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#resources">Resources</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-    </ul>
-  </nav>
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Why Choose Influsynch?</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Discover Influencers</h3>
+                <p>Find the perfect influencers in India for your brand with our advanced search tools.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Manage Campaigns</h3>
+                <p>Plan, execute, and track your influencer campaigns with ease.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Measure Success</h3>
+                <p>Get detailed reports to analyze the impact of your campaigns.</p>
+            </div>
+        </div>
+    </section>
 
-  <div class="hero">
-    <div class="hero-text">
-      <h1>Empowering Connections: Your Ultimate Influencer Marketing Hub</h1>
-      <p>Maximize your influencer relationship strategy with discovery, analytics, and campaign management in one place.</p>
-      <div class="hero-buttons">
-        <a href="#platform">Learn More</a>
-        <a href="#pricing">Start Your Trial</a>
-      </div>
-    </div>
-    <div class="hero-image">
-      <img src="https://via.placeholder.com/500x320.png?text=Dashboard+Preview" alt="Dashboard Preview" />
-    </div>
-  </div>
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>“Influsynch helped us connect with top Indian influencers, driving amazing results for our brand!”</p>
+                <h4>— Priya Sharma, Marketing Head, FashionTrendz</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>“The platform is so easy to use, and the reports gave us clear insights into our campaign performance.”</p>
+                <h4>— Rohan Patel, CEO, TechTrend Innovations</h4>
+            </div>
+        </div>
+    </section>
 
-  <section id="platform">
-    <h2>Our Platform</h2>
-    <p>Discover influencers, analyze performance, and manage end-to-end campaigns in one unified space.</p>
-  </section>
-
-  <section id="serve">
-    <h2>Who We Serve</h2>
-    <p>Brands, agencies, and marketing teams across the globe trust us to scale their influencer marketing efforts.</p>
-  </section>
-
-  <section id="features">
-    <h2>Features</h2>
-    <p>From AI-powered search to automated reporting, we offer everything to simplify your influencer marketing journey.</p>
-  </section>
-
-  <section id="resources">
-    <h2>Resources</h2>
-    <p>Stay ahead with our industry insights, guides, case studies, and webinars built to grow your campaigns smarter.</p>
-  </section>
-
-  <section id="pricing" class="pricing">
-    <h2>Pricing</h2>
-    <p>Flexible plans for every team. Get started for free and upgrade when you're ready to scale.</p>
-  </section>
-
-  <footer>
-    &copy; 2025 Influencity Clone. Built for demo purposes.
-  </footer>
-
+    <!-- Footer -->
+    <footer class="footer">
+        <div>
+            <h3>Influsynch</h3>
+            <p>India’s premier platform for influencer marketing.</p>
+        </div>
+        <div>
+            <h3>Platform</h3>
+            <a href="influencer-discovery.html">Influencer Discovery</a>
+            <a href="relationship-management.html">Relationship Management</a>
+            <a href="campaign-manager.html">Campaign Manager</a>
+            <a href="campaign-reports.html">Campaign Reports</a>
+        </div>
+        <div>
+            <h3>Company</h3>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="pricing.html">Pricing</a>
+        </div>
+        <div>
+            <h3>Follow Us</h3>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
