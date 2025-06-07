@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Signup - Influsynch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #fff;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 4px;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #333;
+        }
+
+        .dropdown-content a:hover {
+            background: #f1f1f1;
+            color: #007bff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-primary:hover -/ {
+            background: #0056b3;
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: #007bff;
+            border: 1px solid #007bff;
+        }
+
+        .btn-secondary:hover {
+            background: #f1f1f1;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: #fff;
+            text-align: center;
+            padding: 5rem 5%;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Signup Section */
+        .signup {
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .signup h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .signup p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #666;
+        }
+
+        .signup-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form-group.error input,
+        .form-group.error select {
+            border-color: #dc3545;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: #fff;
+            padding: 3rem 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a:hover {
+            color: #007bff;
+        }
+
+        .social-links a {
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .signup h2 {
+                font-size: 1.8rem;
+            }
+
+            .signup p {
+                font-size: 1rem;
+            }
+
+            .navbar .btn {
+                font-size: 0.9rem;
+                padding: 0.4rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo"><a href="index.html">Influsynch</a></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <a href="#">Our Platform</a>
+                <div class="dropdown-content">
+                    <a href="influencer-discovery.html">Influencer Discovery</a>
+                    <a href="relationship-management.html">Relationship Management</a>
+                    <a href="campaign-manager.html">Campaign Manager</a>
+                    <a href="campaign-reports.html">Campaign Reports</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="influencer-signup.html" class="btn btn-secondary">I’m an Influencer</a>
+            <a href="business-signup.html" class="btn btn-primary">I’m a Business</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Join Influsynch as a Business</h1>
+        <p>Sign up to connect with India’s top influencers and launch impactful marketing campaigns.</p>
+        <a href="#signup-form" class="btn btn-primary">Sign Up Now</a>
+        <a href="pricing.html" class="btn btn-secondary">View Pricing</a>
+    </section>
+
+    <!-- Signup Section -->
+    <section class="signup">
+        <h2>Business Signup</h2>
+        <p>Create your account to start discovering and collaborating with influencers across India.</p>
+        <form id="business-signup-form" class="signup-form" novalidate>
+            <div class="form-group">
+                <label for="business-name">Business Name *</label>
+                <input type="text" id="business-name" name="business-name" required>
+                <span class="error-message">Please enter your business name.</span>
+            </div>
+            <div class="form-group">
+                <label for="contact-name">Contact Person Name *</label>
+                <input type="text" id="contact-name" name="contact-name" required>
+                <span class="error-message">Please enter the contact person’s name.</span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error-message">Please enter a valid email address.</span>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+                <span class="error-message">Please enter a valid 10-digit phone number.</span>
+            </div>
+            <div class="form-group">
+                <label for="business-type">Business Type *</label>
+                <select id="business-type" name="business-type" required>
+                    <option value="" disabled selected>Select a business type</option>
+                    <option value="retail">Retail</option>
+                    <option value="tech">Technology</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="food">Food & Beverage</option>
+                    <option value="other">Other</option>
+                </select>
+                <span class="error-message">Please select a business type.</span>
+            </div>
+            <div class="form-group">
+                <label for="website">Website</label>
+                <input type="url" id="website" name="website">
+                <span class="error-message">Please enter a valid URL (e.g., https://example.com).</span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password (min 8 characters) *</label>
+                <input type="password" id="password" name="password" required>
+                <span class="error-message">Password must be at least 8 characters long.</span>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password *</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <span class="error-message">Passwords do not match.</span>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div>
+            <h3>Influsynch</h3>
+            <p>India’s premier platform for influencer marketing.</p>
+        </div>
+        <div>
+            <h3>Platform</h3>
+            <a href="influencer-discovery.html">Influencer Discovery</a>
+            <a href="relationship-management.html">Relationship Management</a>
+            <a href="campaign-manager.html">Campaign Manager</a>
+            <a href="campaign-reports.html">Campaign Reports</a>
+        </div>
+        <div>
+            <h3>Company</h3>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="pricing.html">Pricing</a>
+        </div>
+        <div>
+            <h3>Follow Us</h3>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Form Validation Script -->
+    <script>
+        document.getElementById('business-signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let isValid = true;
+            const form = this;
+            const businessName = form.querySelector('#business-name');
+            const contactName = form.querySelector('#contact-name');
+            const email = form.querySelector('#email');
+            const phone = form.querySelector('#phone');
+            const businessType = form.querySelector('#business-type');
+            const website = form.querySelector('#website');
+            const password = form.querySelector('#password');
+            const confirmPassword = form.querySelector('#confirm-password');
+
+            // Reset error states
+            form.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+
+            // Validate Business Name
+            if (!businessName.value.trim()) {
+                businessName.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            // Validate Contact Name
+            if (!contactName.value.trim()) {
+                contactName.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            // Validate Email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim() || !emailRegex.test(email.value)) {
+                email.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            // Validate Phone (optional, but if provided, must be 10 digits)
+            if (phone.value.trim() && !/^\d{10}$/.test(phone.value.replace(/\D/g, ''))) {
+                phone.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            // Validate Business Type
+            if (!businessType.value) {
+                businessType.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            // Validate Website (optional, but if provided, must be a valid URL)
+            const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$/;
+            if (website.value.trim() && !urlRegex.test(website.value)) {
+                website.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            // Validate Password
+            if (!password.value || password.value.length < 8) {
+                password.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            // Validate Confirm Password
+            if (!confirmPassword.value || confirmPassword.value !== password.value) {
+                confirmPassword.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Business signup submitted successfully!'); // Placeholder for form submission
+                form.reset();
+            }
+        });
+    </script>
+</body>
+</html>
