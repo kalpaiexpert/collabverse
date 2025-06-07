@@ -4,360 +4,318 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Influencer Discovery - Influsynch</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        body {
             font-family: 'Inter', sans-serif;
         }
-
-        body {
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            position: sticky;
-            top: 0;
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar .logo a {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: #007bff;
-        }
-
         .dropdown {
             position: relative;
+            padding-bottom: 0.5rem;
         }
-
         .dropdown-content {
             display: none;
             position: absolute;
-            background: #fff;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            z-index: 1;
-            border-radius: 4px;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 0.375rem;
+            min-width: 12rem;
+            z-index: 1000;
+            transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+            opacity: 0;
+            transform: translateY(-5px);
         }
-
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
         .dropdown-content a {
             display: block;
             padding: 0.75rem 1rem;
-            color: #333;
+            color: #374151;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
         }
-
         .dropdown-content a:hover {
-            background: #f1f1f1;
-            color: #007bff;
+            background-color: #f3f4f6;
+            color: #2563eb;
         }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .btn-primary {
-            background: #007bff;
-            color: #fff;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background: #0056b3;
-        }
-
-        .btn-secondary {
-            background: #fff;
-            color: #007bff;
-            border: 1 Mary 1px solid #007bff;
-        }
-
-        .btn-secondary:hover {
-            background: #f1f1f1;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-            color: #fff;
-            text-align: center;
-            padding: 5rem 5%;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Influencer Discovery Section */
-        .influencer-discovery {
-            padding: 3rem 5%;
-            text-align: center;
-        }
-
-        .influencer-discovery h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .influencer-discovery p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #666;
-        }
-
-        .influencer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .influencer-card {
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            overflow: hidden;
-            text-align: left;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .influencer-card img {
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: 0.5rem;
+            background: transparent;
         }
-
-        .influencer-card .content {
-            padding: 1rem;
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-
-        .influencer-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        .influencer-card p {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 0.5rem;
+        .hover-scale:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .influencer-card .btn {
-            display: inline-block;
-            margin-top: 0.5rem;
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(0,87,255,0.1), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1516321497487-e288fb19713f');
+            background-size: cover;
+            background-position: center;
         }
-
-        /* Footer */
-        .footer {
-            background: #333;
-            color: #fff;
-            padding: 3rem 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+        img {
+            max-width: 100%;
+            height: auto;
         }
-
-        .footer h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer a {
-            color: #ccc;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer a:hover {
-            color: #007bff;
-        }
-
-        .social-links a {
-            font-size: 1.2rem;
-            margin-right: 1rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .influencer-discovery h2 {
-                font-size: 1.8rem;
-            }
-
-            .influencer-discovery p {
-                font-size: 1rem;
-            }
-
-            .navbar .btn {
-                font-size: 0.9rem;
-                padding: 0.4rem 1rem;
-            }
+        nav.scrolled {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="logo"><a href="index.html">Influsynch</a></div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <div class="dropdown">
-                <a href="#">Our Platform</a>
-                <div class="dropdown-content">
-                    <a href="influencer-discovery.html">Influencer Discovery</a>
-                    <a href="relationship-management.html">Relationship Management</a>
-                    <a href="campaign-manager.html">Campaign Manager</a>
-                    <a href="campaign-reports.html">Campaign Reports</a>
+<body class="bg-white text-gray-900">
+    <!-- Sticky Header -->
+    <header>
+        <nav id="navbar" class="bg-white sticky top-0 z-50 py-4 px-6 md:px-12 transition-shadow">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div class="logo flex items-center">
+                    <a href="index.html" class="flex items-center text-2xl font-bold text-blue-600">
+                        <img src="https://via.placeholder.com/40" alt="Influsynch Logo" class="h-8 w-8 mr-2">
+                        Influsynch
+                    </a>
+                </div>
+                <div class="nav-links flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <div class="dropdown relative">
+                        <a href="our-platform.html" class="text-blue-600 font-medium">Platform</a>
+                        <div class="dropdown-content">
+                            <a href="influencer-discovery.html">Influencer Discovery</a>
+                            <a href="relationship-management.html">Relationship Management</a>
+                            <a href="campaign-manager.html">Campaign Manager</a>
+                            <a href="campaign-reports.html">Campaign Reports</a>
+                        </div>
+                    </div>
+                    <a href="features.html" class="text-gray-700 hover:text-blue-600 font-medium">Features</a>
+                    <a href="pricing.html" class="text-gray-700 hover:text-blue-600 font-medium">Pricing</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                    <a href="login.html" class="text-gray-700 hover:text-blue-600 font-medium">Login</a>
+                    <a href="demo.html" class="border border-blue-600 text-blue-600 px-4 py-2 rounded-full hover:bg-gray-100 font-medium">Get Your Demo</a>
+                    <a href="business-signup.html" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 font-medium hover:shadow-md">Start Free Trial</a>
                 </div>
             </div>
-            <a href="pricing.html">Pricing</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="#" class="btn btn-secondary">I’m an Influencer</a>
-            <a href="#" class="btn btn-primary">I’m a Business</a>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Discover India’s Top Influencers</h1>
-        <p>Find the perfect influencers for your brand with our powerful search and filtering tools, tailored to the Indian market.</p>
-        <a href="#" class="btn btn-primary">Start Discovering</a>
-        <a href="pricing.html" class="btn btn-secondary">View Pricing</a>
-    </section>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg py-24 px-6 text-center">
+            <div class="max-w-7xl mx-auto fade-in flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Discover Influencers with Precision</h1>
+                    <p class="text-lg text-gray-700 mb-6">Filter by metrics like audience demographics, engagement rate, content type, and more to find India’s top influencers for your brand.</p>
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <a href="business-signup.html" class="bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition duration-300 hover-scale hover:shadow-md">Start Free Trial</a>
+                        <a href="demo.html" class="border border-blue-600 text-blue-600 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition duration-300 hover-scale hover:shadow-md">Schedule Demo</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-8 md:mt-0">
+                    <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5" onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3'" alt="Influencer Search Interface" class="w-full h-80 object-cover rounded-md shadow-md hover-scale transition duration-300">
+                </div>
+            </div>
+        </section>
 
-    <!-- Influencer Discovery Section -->
-    <section class="influencer-discovery">
-        <h2>Explore Influencer Profiles</h2>
-        <p>Browse our curated selection of top influencers across various categories in India.</p>
-        <div class="influencer-grid">
-            <div class="influencer-card">
-                <img src="https://images.unsplash.com/photo-1524504388940-b792ed94c2a3" alt="Aisha Khan">
-                <div class="content">
-                    <h3>Aisha Khan</h3>
-                    <p>Category: Fashion & Lifestyle</p>
-                    <p>Location: Mumbai, India</p>
-                    <p>Followers: 250K</p>
-                    <a href="#" class="btn btn-primary">View Profile</a>
+        <!-- Key Features Section -->
+        <section class="py-16 px-6 bg-gray-50">
+            <div class="max-w-7xl mx-auto fade-in text-center">
+                <h2 class="text-3xl font-semibold text-gray-900 mb-4">Get Instant Access to the Largest Influencer Database</h2>
+                <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Explore millions of influencer profiles across India with powerful tools to find the perfect match.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <article class="bg-white p-6 rounded-md shadow-md hover-scale transition duration-300">
+                        <span class="text-3xl mb-4 block">🧠</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Advanced Search Filters</h3>
+                        <p class="text-gray-600">Search by niche, location, engagement rate, or audience size to pinpoint influencers in India.</p>
+                    </article>
+                    <article class="bg-white p-6 rounded-md shadow-md hover-scale transition duration-300">
+                        <span class="text-3xl mb-4 block">📍</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Demographic Targeting</h3>
+                        <p class="text-gray-600">Target audiences by age, gender, region, or interests for hyper-local campaigns.</p>
+                    </article>
+                    <article class="bg-white p-6 rounded-md shadow-md hover-scale transition duration-300">
+                        <span class="text-3xl mb-4 block">📊</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Real-Time Profile Insights</h3>
+                        <p class="text-gray-600">Access live data on influencer performance to make informed decisions.</p>
+                    </article>
                 </div>
             </div>
-            <div class="influencer-card">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb" alt="Rahul Verma">
-                <div class="content">
-                    <h3>Rahul Verma</h3>
-                    <p>Category: Tech & Gadgets</p>
-                    <p>Location: Bangalore, India</p>
-                    <p>Followers: 180K</p>
-                    <a href="#" class="btn btn-primary">View Profile</a>
+        </section>
+
+        <!-- Detailed Highlights Section -->
+        <section class="py-16 px-6 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <!-- Block 1: Audience Insights -->
+                <article class="fade-in grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    <div class="flex flex-col justify-center">
+                        <h2 class="text-3xl font-semibold text-gray-900 mb-4">Audience Insights</h2>
+                        <p class="text-gray-600 mb-4">Understand your influencer’s audience with detailed insights into gender, age, interests, and regions across India, from urban hubs like Mumbai to tier-2 cities like Surat.</p>
+                        <p class="text-gray-600">Craft campaigns that resonate with your target demographic for maximum impact.</p>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f" onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3'" alt="Demographic Charts" class="w-full h-64 object-cover rounded-md shadow-md hover-scale transition duration-300">
+                    </div>
+                </article>
+
+                <!-- Block 2: Engagement Metrics -->
+                <article class="fade-in grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    <div class="order-last md:order-first">
+                        <img src="https://images.unsplash.com/photo-1552664737-d307ca884978" onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3'" alt="Engagement Dashboard" class="w-full h-64 object-cover rounded-md shadow-md hover-scale transition duration-300">
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <h2 class="text-3xl font-semibold text-gray-900 mb-4">Engagement Metrics</h2>
+                        <p class="text-gray-600 mb-4">Track likes, comments, engagement percentages, and views to evaluate influencer performance.</p>
+                        <p class="text-gray-600">Ensure your campaigns in India deliver measurable results with real-time data.</p>
+                    </div>
+                </article>
+
+                <!-- Block 3: Fake Follower Detection -->
+                <article class="fade-in grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    <div class="flex flex-col justify-center">
+                        <h2 class="text-3xl font-semibold text-gray-900 mb-4">Fake Follower Detection</h2>
+                        <p class="text-gray-600 mb-4">Protect your brand with our authenticity analysis, identifying fake followers across all major platforms.</p>
+                        <p class="text-gray-600">Partner with genuine influencers to maintain trust and credibility in India’s market.</p>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f'" alt="Verification Graphic" class="w-full h-64 object-cover rounded-md shadow-md hover-scale transition duration-300">
+                    </div>
+                </article>
+
+                <!-- Block 4: Platform Filters -->
+                <article class="fade-in grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="order-last md:order-first">
+                        <img src="https://images.unsplash.com/photo-1523240796578-bbba2b9d0f87" onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3'" alt="Platform Filters" class="w-full h-64 object-cover rounded-md shadow-md hover-scale transition duration-300">
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <h2 class="text-3xl font-semibold text-gray-900 mb-4">Multi-Platform Filters</h2>
+                        <p class="text-gray-600 mb-4">Search influencers across Instagram, TikTok, YouTube, and Twitter with a single dashboard.</p>
+                        <ul class="text-gray-600 list-disc pl-5">
+                            <li>Cross-channel insights for Indian campaigns.</li>
+                            <li>Filter by platform-specific metrics.</li>
+                            <li>Unify your multi-platform strategy.</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-16 px-6 bg-white">
+            <div class="max-w-7xl mx-auto fade-in grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <svg class="w-8 h-8 text-blue-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20h10M7 4h10a3 3 0 010 6H7a3 3 0 010-6z"></path></svg>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">100M+ Profiles</h3>
+                    <p class="text-gray-600">Indexed influencer profiles from India and beyond.</p>
+                </div>
+                <div>
+                    <svg class="w-8 h-8 text-blue-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Real-Time Sync</h3>
+                    <p class="text-gray-600">Data refreshed every 24 hours for accuracy.</p>
+                </div>
+                <div>
+                    <svg class="w-8 h-8 text-blue-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">10,000+ Brands</h3>
+                    <p class="text-gray-600">Trusted by marketers across India and globally.</p>
                 </div>
             </div>
-            <div class="influencer-card">
-                <img src="https://images.unsplash.com/photo-1506794778202-cbfcc65c5967" alt="Priya Sharma">
-                <div class="content">
-                    <h3>Priya Sharma</h3>
-                    <p>Category: Travel & Adventure</p>
-                    <p>Location: Delhi, India</p>
-                    <p>Followers: 320K</p>
-                    <a href="#" class="btn btn-primary">View Profile</a>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-16 px-6 bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-center">
+            <div class="max-w-4xl mx-auto fade-in">
+                <h2 class="text-3xl font-semibold mb-4">Try Discovery for Free</h2>
+                <p class="text-lg mb-8">Test our platform’s powerful influencer discovery tools free for 24 hours.</p>
+                <div class="flex justify-center gap-4">
+                    <a href="business-signup.html" class="bg-white text-blue-600 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition duration-300 hover-scale hover:shadow-md">Start Free Trial</a>
+                    <a href="demo.html" class="border border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-blue-600 transition duration-300 hover-scale hover:shadow-md">Book a Demo</a>
                 </div>
             </div>
-            <div class="influencer-card">
-                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9" alt="Vikram Singh">
-                <div class="content">
-                    <h3>Vikram Singh</h3>
-                    <p>Category: Fitness & Health</p>
-                    <p>Location: Pune, India</p>
-                    <p>Followers: 150K</p>
-                    <a href="#" class="btn btn-primary">View Profile</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div>
-            <h3>Influsynch</h3>
-            <p>India’s premier platform for influencer marketing.</p>
+    <footer class="bg-gray-900 text-white py-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Influsynch</h3>
+                <p class="text-gray-400">India’s premier platform for influencer marketing, connecting brands with authentic voices.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Platform</h3>
+                <a href="influencer-discovery.html" class="block text-gray-400 hover:text-blue-400 mb-2">Influencer Discovery</a>
+                <a href="relationship-management.html" class="block text-gray-400 hover:text-blue-400 mb-2">Relationship Management</a>
+                <a href="campaign-manager.html" class="block text-gray-400 hover:text-blue-400 mb-2">Campaign Manager</a>
+                <a href="campaign-reports.html" class="block text-gray-400 hover:text-blue-400 mb-2">Campaign Reports</a>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <a href="about.html" class="block text-gray-400 hover:text-blue-400 mb-2">About Us</a>
+                <a href="contact.html" class="block text-gray-400 hover:text-blue-400 mb-2">Contact</a>
+                <a href="pricing.html" class="block text-gray-400 hover:text-blue-400 mb-2">Pricing</a>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Stay Connected</h3>
+                <form class="mb-4">
+                    <input type="email" placeholder="Enter your email" class="w-full p-2 rounded-md text-gray-900">
+                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md mt-2 hover:bg-blue-700">Subscribe</button>
+                </form>
+                <div class="social-links flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-blue-400">Twitter</a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400">Instagram</a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400">LinkedIn</a>
+                </div>
+            </div>
         </div>
-        <div>
-            <h3>Platform</h3>
-            <a href="influencer-discovery.html">Influencer Discovery</a>
-            <a href="relationship-management.html">Relationship Management</a>
-            <a href="campaign-manager.html">Campaign Manager</a>
-            <a href="campaign-reports.html">Campaign Reports</a>
-        </div>
-        <div>
-            <h3>Company</h3>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
-            <a href="pricing.html">Pricing</a>
-        </div>
-        <div>
-            <h3>Follow Us</h3>
-            <div class="social-links">
-                <a href="#">Twitter</a>
-                <a href="#">Instagram</a>
-                <a href="#">LinkedIn</a>
+        <div class="max-w-7xl mx-auto mt-8 border-t border-gray-700 pt-4 text-center text-gray-400">
+            <p>© 2025 Influsynch. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-2">
+                <a href="#" class="hover:text-blue-400">Terms</a>
+                <a href="#" class="hover:text-blue-400">Privacy</a>
+                <a href="#" class="hover:text-blue-400">Cookies</a>
             </div>
         </div>
     </footer>
+
+    <!-- JavaScript for Fade-In Animations and Navbar Shadow -->
+    <script>
+        // Fade-in animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            elements.forEach(el => observer.observe(el));
+        });
+
+        // Navbar shadow on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 0) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
