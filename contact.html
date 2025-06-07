@@ -3,414 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Influsynch</title>
+    <title>Contact - Influsynch</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        body {
             font-family: 'Inter', sans-serif;
         }
-
-        body {
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            position: sticky;
-            top: 0;
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar .logo a {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: #007bff;
-        }
-
+        /* Dropdown styles */
         .dropdown {
             position: relative;
+            padding-bottom: 0.5rem;
         }
-
         .dropdown-content {
             display: none;
             position: absolute;
-            background: #fff;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            z-index: 1;
-            border-radius: 4px;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 0.375rem;
+            min-width: 12rem;
+            z-index: 1000;
+            transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+            opacity: 0;
+            transform: translateY(-5px);
         }
-
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
         .dropdown-content a {
             display: block;
             padding: 0.75rem 1rem;
-            color: #333;
+            color: #374151;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
         }
-
         .dropdown-content a:hover {
-            background: #f1f1f1;
-            color: #007bff;
+            background-color: #f3f4f6;
+            color: #2563eb;
         }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .btn-primary {
-            background: #007bff;
-            color: #fff;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background: #0056b3;
-        }
-
-        .btn-secondary {
-            background: #fff;
-            color: #007bff;
-            border: 1px solid #007bff;
-        }
-
-        .btn-secondary:hover {
-            background: #f1f1f1;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-            color: #fff;
-            text-align: center;
-            padding: 5rem 5%;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 3rem 5%;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #666;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
             width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            font-size: 1rem;
+            height: 0.5rem;
+            background: transparent;
         }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-
-        .error-message {
-            color: #dc3545;
-            font-size: 0.9rem;
-            margin-top: 0.25rem;
-            display: none;
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        .form-group.error input,
-        .form-group.error select,
-        .form-group.error textarea {
-            border-color: #dc3545;
+        .hover-scale:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
         }
-
-        .form-group.error .error-message {
-            display: block;
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(0,87,255,0.1), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3');
+            background-size: cover;
+            background-position: center;
         }
-
-        /* Footer */
-        .footer {
-            background: #333;
-            color: #fff;
-            padding: 3rem 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer a {
-            color: #ccc;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer a:hover {
-            color: #007bff;
-        }
-
-        .social-links a {
-            font-size: 1.2rem;
-            margin-right: 1rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .contact h2 {
-                font-size: 1.8rem;
-            }
-
-            .contact p {
-                font-size: 1rem;
-            }
-
-            .navbar .btn {
-                font-size: 0.9rem;
-                padding: 0.4rem 1rem;
-            }
+        img {
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
-<body>
+<body class="bg-white text-gray-900">
     <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="logo"><a href="index.html">Influsynch</a></div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <div class="dropdown">
-                <a href="#">Our Platform</a>
-                <div class="dropdown-content">
-                    <a href="influencer-discovery.html">Influencer Discovery</a>
-                    <a href="relationship-management.html">Relationship Management</a>
-                    <a href="campaign-manager.html">Campaign Manager</a>
-                    <a href="campaign-reports.html">Campaign Reports</a>
-                </div>
+    <nav class="bg-white shadow-md sticky top-0 z-50 py-4 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="logo">
+                <a href="index.html" class="text-2xl font-bold text-blue-600">Influsynch</a>
             </div>
-            <a href="pricing.html">Pricing</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="#" class="btn btn-secondary">I’m an Influencer</a>
-            <a href="#" class="btn btn-primary">I’m a Business</a>
+            <div class="nav-links flex items-center space-x-6">
+                <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                <div class="dropdown relative">
+                    <a href="our-platform.html" class="text-gray-700 hover:text-blue-600 font-medium">Our Platform</a>
+                    <div class="dropdown-content">
+                        <a href="influencer-discovery.html">Influencer Discovery</a>
+                        <a href="relationship-management.html">Relationship Management</a>
+                        <a href="campaign-manager.html">Campaign Manager</a>
+                        <a href="campaign-reports.html">Campaign Reports</a>
+                    </div>
+                </div>
+                <a href="features.html" class="text-gray-700 hover:text-blue-600 font-medium">Features</a>
+                <a href="pricing.html" class="text-gray-700 hover:text-blue-600 font-medium">Pricing</a>
+                <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+                <a href="contact.html" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                <a href="influencer-signup.html" class="border border-blue-600 text-blue-600 px-4 py-2 rounded-md hover:bg-gray-100 font-medium">I’m an Influencer</a>
+                <a href="business-signup.html" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 font-medium">I’m a Business</a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <h1>Contact Influsynch</h1>
-        <p>Have questions or need assistance? Reach out to our team to learn how Influsynch can elevate your influencer marketing strategy.</p>
-        <a href="#contact-form" class="btn btn-primary">Get in Touch</a>
-        <a href="pricing.html" class="btn btn-secondary">View Pricing</a>
+    <section class="hero-bg py-24 px-6 text-center">
+        <div class="max-w-4xl mx-auto fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Get in Touch with Influsynch</h1>
+            <p class="text-lg text-gray-700 mb-8">Our India-based team is here to help you elevate your influencer marketing campaigns. Reach out today!</p>
+            <a href="#contact-form" class="bg-blue-600 text-white px-8 py-4 rounded-md font-medium hover:bg-blue-700 transition duration-300 hover-scale">Contact Us</a>
+        </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact">
-        <h2>Get in Touch</h2>
-        <p>Fill out the form below, and our team will get back to you within 24 hours.</p>
-        <form id="contact-form" class="contact-form" novalidate>
-            <div class="form-group">
-                <label forESA name">Name *</label>
-                <input type="text" id="name" name="name" required>
-                <span class="error-message">Please enter your name.</span>
+    <section class="py-16 px-6 bg-gray-100">
+        <div class="max-w-7xl mx-auto fade-in">
+            <h2 class="text-3xl font-semibold text-gray-900 text-center mb-12">Let’s Connect</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Contact Form -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Send Us a Message</h3>
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" class="w-full p-3 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Your Email" class="w-full p-3 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" class="w-full p-3 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 transition duration-300 hover-scale w-full">Submit</button>
+                    </form>
+                </div>
+                <!-- Contact Details -->
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                <div>
+                                    <p class="text-gray-700 font-medium">Email</p>
+                                    <p class="text-gray-600">care.collabverse@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                <div>
+                                    <p class="text-gray-700 font-medium">Phone</p>
+                                    <p class="text-gray-600">+91 85111 75675</p>
+                                    <p class="text-gray-600">+91 70465 76320</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                <div>
+                                    <p class="text-gray-700 font-medium">Address</p>
+                                    <p class="text-gray-600">Galaxy Arcade, Pal, Surat-395009, India</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c37c4" onerror="this.src='https://images.unsplash.com/photo-1523240796578-bbba2b9d0f87'" alt="Support Team" class="w-full h-40 object-cover rounded-md mt-4 hover-scale transition duration-300">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" id="email" name="email" required>
-                <span class="error-message">Please enter a valid email address.</span>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone">
-                <span class="error-message">Please enter a valid 10-digit phone number.</span>
-            </div>
-            <div class="form-group">
-                <label for="user-type">I am a *</label>
-                <select id="user-type" name="user-type" required>
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="business">I’m a Business</option>
-                    <option value="influencer">I’m an Influencer</option>
-                </select>
-                <span class="error-message">Please select your user type.</span>
-            </div>
-            <div class="form-group">
-                <label for="message">Message *</label>
-                <textarea id="message" name="message" required></textarea>
-                <span class="error-message">Please enter your message.</span>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </div>
+    </section>
+
+    <!-- Call-to-Action -->
+    <section class="py-16 px-6 bg-blue-600 text-white text-center">
+        <div class="max-w-4xl mx-auto fade-in">
+            <h2 class="text-3xl font-semibold mb-4">Ready to Transform Your Influencer Marketing?</h2>
+            <p class="text-lg mb-8">Join Influsynch today and connect with India’s top influencers.</p>
+            <a href="business-signup.html" class="bg-white text-blue-600 px-8 py-4 rounded-md font-medium hover:bg-gray-100 transition duration-300 hover-scale">Sign Up Now</a>
+        </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div>
-            <h3>Influsynch</h3>
-            <p>India’s premier platform for influencer marketing.</p>
+    <footer class="bg-gray-900 text-white py-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Influsynch</h3>
+                <p class="text-gray-400">India’s premier platform for influencer marketing.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Platform</h3>
+                <a href="influencer-discovery.html" class="block text-gray-400 hover:text-blue-400 mb-2">Influencer Discovery</a>
+                <a href="relationship-management.html" class="block text-gray-400 hover:text-blue-400 mb-2">Relationship Management</a>
+                <a href="campaign-manager.html" class="block text-gray-400 hover:text-blue-400 mb-2">Campaign Manager</a>
+                <a href="campaign-reports.html" class="block text-gray-400 hover:text-blue-400 mb-2">Campaign Reports</a>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <a href="about.html" class="block text-gray-400 hover:text-blue-400 mb-2">About Us</a>
+                <a href="contact.html" class="block text-gray-400 hover:text-blue-400 mb-2">Contact</a>
+                <a href="pricing.html" class="block text-gray-400 hover:text-blue-400 mb-2">Pricing</a>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Stay Connected</h3>
+                <form class="mb-4">
+                    <input type="email" placeholder="Enter your email" class="w-full p-2 rounded-md text-gray-900">
+                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md mt-2 hover:bg-blue-700">Subscribe</button>
+                </form>
+                <div class="social-links flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-blue-400">Twitter</a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400">Instagram</a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400">LinkedIn</a>
+                </div>
+            </div>
         </div>
-        <div>
-            <h3>Platform</h3>
-            <a href="influencer-discovery.html">Influencer Discovery</a>
-            <a href="relationship-management.html">Relationship Management</a>
-            <a href="campaign-manager.html">Campaign Manager</a>
-            <a href="campaign-reports.html">Campaign Reports</a>
-        </div>
-        <div>
-            <h3>Company</h3>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
-            <a href="pricing.html">Pricing</a>
-        </div>
-        <div>
-            <h3>Follow Us</h3>
-            <div class="social-links">
-                <a href="#">Twitter</a>
-                <a href="#">Instagram</a>
-                <a href="#">LinkedIn</a>
+        <div class="max-w-7xl mx-auto mt-8 border-t border-gray-700 pt-4 text-center text-gray-400">
+            <p>© 2025 Influsynch. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-2">
+                <a href="#" class="hover:text-blue-400">Terms</a>
+                <a href="#" class="hover:text-blue-400">Privacy</a>
+                <a href="#" class="hover:text-blue-400">Cookies</a>
             </div>
         </div>
     </footer>
 
-    <!-- Form Validation Script -->
+    <!-- JavaScript for Fade-In Animations -->
     <script>
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            let isValid = true;
-            const form = this;
-            const name = form.querySelector('#name');
-            const email = form.querySelector('#email');
-            const phone = form.querySelector('#phone');
-            const userType = form.querySelector('#user-type');
-            const message = form.querySelector('#message');
-
-            // Reset error states
-            form.querySelectorAll('.form-group').forEach(group => {
-                group.classList.remove('error');
-            });
-
-            // Validate Name
-            if (!name.value.trim()) {
-                name.parentElement.classList.add('error');
-                isValid = false;
-            }
-
-            // Validate Email
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!email.value.trim() || !emailRegex.test(email.value)) {
-                email.parentElement.classList.add('error');
-                isValid = false;
-            }
-
-            // Validate Phone (optional, but if provided, must be 10 digits)
-            if (phone.value.trim() && !/^\d{10}$/.test(phone.value.replace(/\D/g, ''))) {
-                phone.parentElement.classList.add('error');
-                isValid = false;
-            }
-
-            // Validate User Type
-            if (!userType.value) {
-                userType.parentElement.classList.add('error');
-                isValid = false;
-            }
-
-            // Validate Message
-            if (!message.value.trim()) {
-                message.parentElement.classList.add('error');
-                isValid = false;
-            }
-
-            if (isValid) {
-                alert('Form submitted successfully!'); // Placeholder for form submission
-                form.reset();
-            }
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            elements.forEach(el => observer.observe(el));
         });
     </script>
 </body>
