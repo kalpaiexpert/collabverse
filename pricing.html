@@ -10,9 +10,10 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Improved dropdown styles */
+        /* Enhanced dropdown styles */
         .dropdown {
             position: relative;
+            padding-bottom: 0.5rem; /* Extend hover area */
         }
         .dropdown-content {
             display: none;
@@ -23,11 +24,10 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 0.375rem;
             min-width: 12rem;
-            z-index: 100;
-            margin-top: 0.25rem; /* Small gap to prevent flicker */
+            z-index: 1000; /* High z-index */
             transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
             opacity: 0;
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
         .dropdown:hover .dropdown-content {
             display: block;
@@ -36,13 +36,24 @@
         }
         .dropdown-content a {
             display: block;
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1rem;
             color: #374151;
             text-decoration: none;
+            transition: background-color 0.2s ease;
         }
         .dropdown-content a:hover {
             background-color: #f3f4f6;
             color: #2563eb;
+        }
+        /* Bridge gap with pseudo-element */
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 0.5rem;
+            background: transparent;
         }
         .fade-in {
             opacity: 0;
@@ -63,7 +74,6 @@
             background-position: center;
         }
         img {
-            display: block;
             max-width: 100%;
             height: auto;
         }
@@ -157,7 +167,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 px-600">
+    <footer class="bg-gray-900 text-white py-12 px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
                 <h3 class="text-lg font-semibold mb-4">Influsynch</h3>
