@@ -31,10 +31,11 @@
             align-items: center;
         }
 
-        .navbar .logo {
+        .navbar .logo a {
             font-size: 1.5rem;
             font-weight: 700;
             color: #007bff;
+            text-decoration: none;
         }
 
         .nav-links {
@@ -102,11 +103,32 @@
         .btn-secondary {
             background: #fff;
             color: #007bff;
-            border: 1px solid #007bff;
+            border: 1 Mary 1px solid #007bff;
         }
 
         .btn-secondary:hover {
             background: #f1f1f1;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: #fff;
+            text-align: center;
+            padding: 5rem 5%;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Influencer Discovery Section */
@@ -115,7 +137,7 @@
             text-align: center;
         }
 
-        .influencer-discovery h1 {
+        .influencer-discovery h2 {
             font-size: 2rem;
             margin-bottom: 1rem;
         }
@@ -207,7 +229,15 @@
                 display: none;
             }
 
-            .influencer-discovery h1 {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .influencer-discovery h2 {
                 font-size: 1.8rem;
             }
 
@@ -225,7 +255,7 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo">Influsynch</div>
+        <div class="logo"><a href="index.html">Influsynch</a></div>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <div class="dropdown">
@@ -245,10 +275,18 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Discover India’s Top Influencers</h1>
+        <p>Find the perfect influencers for your brand with our powerful search and filtering tools, tailored to the Indian market.</p>
+        <a href="#" class="btn btn-primary">Start Discovering</a>
+        <a href="pricing.html" class="btn btn-secondary">View Pricing</a>
+    </section>
+
     <!-- Influencer Discovery Section -->
     <section class="influencer-discovery">
-        <h1>Discover Top Indian Influencers</h1>
-        <p>Find the perfect influencers for your brand with our powerful search and filtering tools, tailored to the Indian market.</p>
+        <h2>Explore Influencer Profiles</h2>
+        <p>Browse our curated selection of top influencers across various categories in India.</p>
         <div class="influencer-grid">
             <div class="influencer-card">
                 <img src="https://images.unsplash.com/photo-1524504388940-b792ed94c2a3" alt="Aisha Khan">
